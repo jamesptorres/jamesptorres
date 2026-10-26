@@ -1,24 +1,37 @@
 ---
 import Base from '../layouts/Base.astro';
-import PostList from '../components/PostList.astro';
 import Avatar from '../components/Avatar.astro';
+import WelcomeHero from '../components/WelcomeHero.astro';
+import PostCard from '../components/PostCard.astro';
+import PostGrid from '../components/PostGrid.astro';
 import { getPosts } from '../utils';
-import { LINKEDIN_URL } from '../consts';
-const posts = (await getPosts()).slice(0, 10);
+const posts = await getPosts();
+const [latest, ...rest] = posts;
+const recent = rest.slice(0, 6);
 ---
 <Base>
-  <div class="wrap">
-    <section class="intro">
-      <Avatar size={88} eager />
-      <div>
-        <p>Hi, I'm James. I work with Microsoft Dynamics 365 Finance &amp; Operations, and this is where I write things down.</p>
-        <p>Mostly practical notes from real projects, plus some thinking out loud about where ERP is going: AI, agents, and the move toward headless systems.</p>
-        <p class="sans" style="font-size:15px;color:var(--fg-subtle)"><a href="/about/">More about me</a> · <a href={LINKEDIN_URL} rel="me noopener">LinkedIn</a> · <a href="/rss.xml">RSS</a></p>
+  <div class="container">
+    <WelcomeHero />
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Latest from the blog</h2>
+        {posts.length > 1 && <a href="/blog/">All posts →</a>}
       </div>
+      {latest ? <PostCard post={latest} featured /> : <PostGrid posts={[]} />}
+      {recent.length > 0 && <PostGrid posts={recent} />}
     </section>
 
-    <h2 class="section-title">Recent writing</h2>
-    <PostList posts={posts} />
-    {posts.length >= 10 && <p class="sans" style="font-size:15px"><a href="/blog/">All posts</a></p>}
+    <section class="about-strip">
+      <Avatar size={144} />
+      <div>
+        <h2>About this blog</h2>
+        <p>Written by me, for anyone building on or thinking about ERP. Questions, corrections, and different opinions are always welcome.</p>
+        <div class="links">
+          <a href="/contributions/">Talks &amp; community work</a>
+          <a href="/rss.xml">Follow via RSS</a>
+        </div>
+      </div>
+    </section>
   </div>
 </Base>

@@ -3,50 +3,65 @@ import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import Base from './Base.astro';
 import Avatar from '../components/Avatar.astro';
+import PostGrid from '../components/PostGrid.astro';
 import { formatDate, readingTime, slugifyTag } from '../utils';
-import { LINKEDIN_URL } from '../consts';
+import { AUTHOR, AUTHOR_BIO, LINKEDIN_URL } from '../consts';
 
-interface Props {
-  post: CollectionEntry<'blog'>;
-  prev?: CollectionEntry<'blog'>;
-  next?: CollectionEntry<'blog'>;
-}
-const { post, prev, next } = Astro.props;
+interface Props { post: CollectionEntry<'blog'>; more: CollectionEntry<'blog'>[] }
+const { post, more } = Astro.props;
 const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, draft } = post.data;
 ---
 <Base title={title} description={description} image={heroImage?.src} type="article">
-  <article class="wrap">
-    {draft && <span class="draft-banner">Draft: not visible on the live site</span>}
-    <h1 class="article-title">{title}</h1>
-    <p class="meta">
-      <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
-      {updatedDate && <> (updated <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time>)</>}
-      {' · '}{readingTime(post.body)}
-      {tags.length > 0 && <> · {tags.map((t, i) => <>{i > 0 && ', '}<a href={`/tags/${slugifyTag(t)}/`}>{t}</a></>)}</>}
-    </p>
+  <article>
+    <header class="container-read article-head">
+      {draft && <p><span class="draft-banner">Draft: not visible on the live site</span></p>}
+      {tags[0] && <a class="tag" href={`/tags/${slugifyTag(tags[0])}/`}>{tags[0]}</a>}
+      <h1>{title}</h1>
+      <p class="dek">{description}</p>
+      <div class="byline">
+        <Avatar size={80} eager />
+        <div>
+          <strong>{AUTHOR}</strong>
+          <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+          {updatedDate && <> · Updated <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time></>}
+          {' · '}{readingTime(post.body)}
+        </div>
+      </div>
+    </header>
 
     {heroImage && (
-      <figure style="margin:0 0 32px">
-        <Image src={heroImage} alt={heroAlt ?? ''} widths={[680, 1360]} sizes="(max-width: 720px) 100vw, 680px" loading="eager" />
-      </figure>
+      <div class="article-cover">
+        <Image src={heroImage} alt={heroAlt ?? ''} widths={[860, 1720]} sizes="(max-width: 900px) 100vw, 860px" loading="eager" />
+      </div>
     )}
 
-    <div class="prose">
-      <slot />
-    </div>
+    <div class="container-read">
+      <div class="prose">
+        <slot />
+      </div>
 
-    <div class="signoff">
-      <Avatar size={52} />
-      <p>Thanks for reading. If this was useful, or you see it differently, I'd like to hear from you on <a href={LINKEDIN_URL} rel="me noopener">LinkedIn</a>.</p>
-    </div>
+      {tags.length > 1 && (
+        <ul class="topic-links" style="margin-top:40px">
+          {tags.map((t) => <li><a href={`/tags/${slugifyTag(t)}/`}>{t}</a></li>)}
+        </ul>
+      )}
 
-    {(prev || next) && (
-      <nav class="post-nav" aria-label="More posts">
-        {prev && <a href={`/blog/${prev.id}/`}>← {prev.data.title}</a>}
-        {next && <a class="next" href={`/blog/${next.id}/`}>{next.data.title} →</a>}
-      </nav>
-    )}
+      <aside class="author-box">
+        <Avatar size={128} />
+        <div>
+          <strong>Written by {AUTHOR}</strong>
+          <p>{AUTHOR_BIO} If this was useful, or you see it differently, <a href={LINKEDIN_URL} rel="me noopener">let me know on LinkedIn</a>.</p>
+        </div>
+      </aside>
+    </div>
   </article>
+
+  {more.length > 0 && (
+    <section class="container more-posts">
+      <h2>More from the blog</h2>
+      <PostGrid posts={more} />
+    </section>
+  )}
 
   <script>
     document.querySelectorAll('.prose pre').forEach((pre) => {

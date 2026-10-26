@@ -18,7 +18,15 @@ Set `draft: false`, commit, push to `main`. Live in ~1-2 minutes.
 
 ## Headshot
 
-Drop a square photo at `src/assets/headshot.jpg` (or .png/.webp), at least 400x400. It appears on the home page intro, the About page, and the sign-off at the end of each post. Without it, a "JT" monogram shows instead.
+Drop a square photo at `src/assets/headshot.jpg` (or .png/.webp), at least 400x400. It appears in the header, the home page welcome, the About page, post bylines, and the author box. Without it, a "JT" monogram shows instead.
+
+## Welcome photo
+
+The home page opens with a large photo next to your welcome card. Save it as `src/assets/welcome.jpg` (landscape, about 4:3, 1600px wide or more). A candid shot works best: you at your desk, presenting, or a workspace photo. If it's missing, the headshot is used; if that's missing too, a soft gradient shows.
+
+## Cover images
+
+Add `heroImage: ./images/<post>/cover.jpg` (16:9 works best) to a post's frontmatter to show it on cards and at the top of the post. Without one, cards show a soft pattern on desktop and no image on phones.
 
 ## Code blocks
 

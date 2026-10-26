@@ -7,10 +7,10 @@ posts.flatMap((p) => p.data.tags).forEach((t) => counts.set(t, (counts.get(t) ??
 const tags = [...counts].sort((a, b) => a[0].localeCompare(b[0]));
 ---
 <Base title="Topics" description="Posts by topic.">
-  <div class="wrap">
-    <h1 class="page-title">Topics</h1>
-    {tags.length === 0 ? <p class="empty">No topics yet.</p> : (
-      <p class="tag-cloud">{tags.map(([t, n]) => <a href={`/tags/${slugifyTag(t)}/`}>{t} ({n})</a>)}</p>
+  <div class="container">
+    <header class="page-head"><h1>Topics</h1><p>Browse posts by subject.</p></header>
+    {tags.length === 0 ? <div class="empty">No topics yet.</div> : (
+      <ul class="topic-links">{tags.map(([t, n]) => <li><a href={`/tags/${slugifyTag(t)}/`}>{t} ({n})</a></li>)}</ul>
     )}
   </div>
 </Base>

@@ -1,20 +1,21 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PostList from '../../components/PostList.astro';
-import { getPosts } from '../../utils';
+import PostGrid from '../../components/PostGrid.astro';
+import { getPosts, slugifyTag } from '../../utils';
 const posts = await getPosts();
-const byYear = Map.groupBy(posts, (p) => p.data.pubDate.getUTCFullYear());
+const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
 ---
-<Base title="Writing" description="Everything I've written, newest first.">
-  <div class="wrap">
-    <h1 class="page-title">Writing</h1>
-    <p class="page-intro">Everything so far, newest first. You can also browse by <a href="/tags/">topic</a> or follow along with <a href="/rss.xml">RSS</a>.</p>
-    {posts.length === 0 && <PostList posts={[]} />}
-    {[...byYear].map(([year, list]) => (
-      <section>
-        <h2 class="year">{year}</h2>
-        <PostList posts={list} />
-      </section>
-    ))}
+<Base title="Blog" description="Posts on Dynamics 365 F&O, AI in ERP, and headless ERP.">
+  <div class="container">
+    <header class="page-head">
+      <h1>Blog</h1>
+      <p>Notes on Dynamics 365 F&amp;O, AI in ERP, and where it's all heading.</p>
+    </header>
+    {tags.length > 0 && (
+      <ul class="topic-links" aria-label="Topics">
+        {tags.map((t) => <li><a href={`/tags/${slugifyTag(t)}/`}>{t}</a></li>)}
+      </ul>
+    )}
+    <PostGrid posts={posts} />
   </div>
 </Base>

@@ -1,0 +1,29 @@
+---
+// Photo-led welcome. Uses src/assets/welcome.(jpg|png|webp) if present,
+// otherwise the headshot, otherwise a warm gradient.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { LINKEDIN_URL } from '../consts';
+
+const pick = (g: Record<string, { default: ImageMetadata }>) => Object.values(g)[0]?.default;
+const welcome = pick(import.meta.glob<{ default: ImageMetadata }>('../assets/welcome.{jpg,jpeg,png,webp}', { eager: true }));
+const headshot = pick(import.meta.glob<{ default: ImageMetadata }>('../assets/headshot.{jpg,jpeg,png,webp}', { eager: true }));
+const photo = welcome ?? headshot;
+---
+<section class="welcome-hero">
+  <div class="welcome-photo">
+    {photo
+      ? <Image src={photo} alt="James Paul Torres" widths={[700, 1100, 1600]} sizes="(max-width: 760px) 100vw, 680px" loading="eager" />
+      : <div class="welcome-photo-fallback" aria-hidden="true"></div>}
+  </div>
+  <div class="welcome-card">
+    <h1>Hi, I'm James.</h1>
+    <p>I work with Microsoft Dynamics 365 Finance &amp; Operations, and this blog is where I share what I learn along the way.</p>
+    <p>Practical notes from real projects, plus some thinking out loud about where ERP is heading with AI, agents, and headless systems.</p>
+    <div class="welcome-actions">
+      <a class="btn" href="/blog/">Read the blog</a>
+      <a href="/about/">More about me</a>
+      <a href={LINKEDIN_URL} rel="me noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>

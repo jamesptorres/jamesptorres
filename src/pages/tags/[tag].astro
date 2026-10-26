@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import PostList from '../../components/PostList.astro';
+import PostGrid from '../../components/PostGrid.astro';
 import { getPosts, slugifyTag } from '../../utils';
 
 export async function getStaticPaths() {
@@ -15,9 +15,11 @@ export async function getStaticPaths() {
 const { label, posts } = Astro.props;
 ---
 <Base title={`Posts about ${label}`} description={`Posts tagged ${label}.`}>
-  <div class="wrap">
-    <h1 class="page-title">Posts about {label}</h1>
-    <p class="page-intro sans" style="font-size:15px"><a href="/tags/">All topics</a></p>
-    <PostList posts={posts} />
+  <div class="container">
+    <header class="page-head">
+      <h1>Posts about {label}</h1>
+      <p><a href="/tags/">All topics</a></p>
+    </header>
+    <PostGrid posts={posts} />
   </div>
 </Base>
