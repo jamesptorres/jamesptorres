@@ -14,6 +14,7 @@ const blog = defineCollection({
       draft: z.boolean().default(false),
       heroImage: image().optional(),
       heroAlt: z.string().optional(),
+      heroCaption: z.string().optional(),
       // Optional video for link previews (og:video). Direct file URL (mp4/webm) or a path under public/.
       video: z
         .object({

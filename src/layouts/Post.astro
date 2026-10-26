@@ -9,7 +9,7 @@ import { AUTHOR, AUTHOR_BIO, LINKEDIN_URL } from '../consts';
 
 interface Props { post: CollectionEntry<'blog'>; more: CollectionEntry<'blog'>[] }
 const { post, more } = Astro.props;
-const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, draft, video } = post.data;
+const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, heroCaption, draft, video } = post.data;
 ---
 <Base title={title} description={description} image={heroImage?.src} type="article" video={video}>
   <article>
@@ -30,9 +30,10 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, draf
     </header>
 
     {heroImage && (
-      <div class="article-cover">
+      <figure class="article-cover">
         <Image src={heroImage} alt={heroAlt ?? ''} widths={[860, 1720]} sizes="(max-width: 900px) 100vw, 860px" loading="eager" />
-      </div>
+        {heroCaption && <figcaption>{heroCaption}</figcaption>}
+      </figure>
     )}
 
     <div class="container-read">

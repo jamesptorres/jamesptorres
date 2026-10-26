@@ -179,6 +179,7 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; }
 .byline strong { display: block; color: var(--fg); font-weight: 600; }
 .article-cover { max-width: 900px; margin: 8px auto 40px; padding: 0 20px; }
 .article-cover img { border-radius: var(--radius); }
+.article-cover figcaption { font-size: 14px; color: var(--fg-subtle); text-align: center; margin-top: 10px; line-height: 1.5; }
 .draft-banner { display: inline-block; background: #fff4d6; color: #7a5300; font-size: 13px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
 
 .prose { font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.75; }
