@@ -3,7 +3,7 @@ title: "Why I'm starting this blog"
 description: "Ten-plus years of leaning on this community's knowledge. Here's why I'm finally giving back, and what you can expect from this blog."
 pubDate: 2026-10-26
 tags: ["personal", "community"]
-draft: true
+draft: false
 ---
 
 For more than ten years, I've been a quiet consumer of the Microsoft business applications community. When I hit a wall in Dynamics, the answer usually came from someone else's blog post, a forum thread, a user group session, or a conference talk. Someone had been there first, and they took the time to write it down.
