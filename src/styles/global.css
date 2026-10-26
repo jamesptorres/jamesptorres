@@ -193,6 +193,7 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; }
 .prose table { border-collapse: collapse; width: 100%; font-family: var(--font-sans); font-size: 15px; display: block; overflow-x: auto; }
 .prose th { text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); padding: 8px 10px; }
 .prose td { border-bottom: 1px solid var(--border); padding: 8px 10px; }
+.prose td:first-child { white-space: nowrap; }
 
 code, pre { font-family: var(--font-mono); }
 :not(pre) > code { font-size: 0.8em; background: var(--code-bg); padding: 0.12em 0.35em; border-radius: 4px; }
