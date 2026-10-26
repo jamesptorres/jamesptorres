@@ -1,5 +1,5 @@
 ---
-import { AUTHOR, SITE_TAGLINE, LINKEDIN_URL, GITHUB_URL, DISCLAIMER } from '../consts';
+import { AUTHOR, SITE_TAGLINE, LINKEDIN_URL, DISCLAIMER } from '../consts';
 ---
 <footer class="site-footer">
   <div class="container">
@@ -13,7 +13,6 @@ import { AUTHOR, SITE_TAGLINE, LINKEDIN_URL, GITHUB_URL, DISCLAIMER } from '../c
         <a href="/contributions/">Contributions</a>
         <a href="/about/">About</a>
         <a href={LINKEDIN_URL} rel="me noopener">LinkedIn</a>
-        <a href={GITHUB_URL} rel="me noopener">GitHub</a>
       </nav>
     </div>
     <p class="footer-small">© {new Date().getFullYear()} {AUTHOR}. {DISCLAIMER}</p>
