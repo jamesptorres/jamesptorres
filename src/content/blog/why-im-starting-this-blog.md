@@ -1,7 +1,7 @@
 ---
 title: "Why I'm starting this blog"
 description: "Ten-plus years of leaning on this community's knowledge. Here's why I'm finally giving back, and what you can expect from this blog."
-pubDate: 2026-10-26
+pubDate: 2026-10-25
 tags: ["personal", "community"]
 heroImage: ./images/why-im-starting-this-blog/cover.jpg
 heroAlt: "James Torres and co-presenter Cody Polodna in front of the title slide for Do You Git It? Migrating D365 F&O from TFVC to Git, at Community Summit North America 2026"
