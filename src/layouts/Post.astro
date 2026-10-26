@@ -15,7 +15,11 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, hero
   <article>
     <header class="container-read article-head">
       {draft && <p><span class="draft-banner">Draft: not visible on the live site</span></p>}
-      {tags[0] && <a class="tag" href={`/tags/${slugifyTag(tags[0])}/`}>{tags[0]}</a>}
+      {tags.length > 0 && (
+        <p class="post-tags">
+          {tags.map((t, i) => <>{i > 0 && <span aria-hidden="true"> · </span>}<a class="tag" href={`/tags/${slugifyTag(t)}/`}>{t}</a></>)}
+        </p>
+      )}
       <h1>{title}</h1>
       <p class="dek">{description}</p>
       <div class="byline">
@@ -40,12 +44,6 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, hero
       <div class="prose">
         <slot />
       </div>
-
-      {tags.length > 1 && (
-        <ul class="topic-links" style="margin-top:40px">
-          {tags.map((t) => <li><a href={`/tags/${slugifyTag(t)}/`}>{t}</a></li>)}
-        </ul>
-      )}
 
       <aside class="author-box">
         <Avatar size={128} />
