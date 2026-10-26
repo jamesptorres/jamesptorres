@@ -9,10 +9,10 @@ intro: Credentials and community work, newest first.
 
 - **[Microsoft Certified: Dynamics 365: Finance and Operations Apps Developer Associate](https://learn.microsoft.com/en-us/credentials/certifications/d365-finance-and-operations-apps-developer-associate/)**<br>
   Earned November 30, 2021 · Active through November 30, 2027
+- **Scrum Master**<br>
+  Earned September 2017
 - **Microsoft Specialist: Microsoft Dynamics AX Development Introduction**<br>
   Earned March 23, 2017
-- **Scrum Master**<br>
-  Earned 2017
 
 ## Microsoft exams passed
 
