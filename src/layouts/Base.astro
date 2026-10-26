@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+import {
+  SITE_TITLE, SITE_DESCRIPTION, AUTHOR, LINKEDIN_URL, GITHUB_URL,
+  CF_ANALYTICS_TOKEN, DISCLAIMER,
+} from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+}
+const { title, description = SITE_DESCRIPTION, image = '/og-default.png', type = 'website' } = Astro.props;
+const fullTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/blog/', label: 'Blog' },
+  { href: '/contributions/', label: 'Contributions' },
+  { href: '/about/', label: 'About' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={AUTHOR} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <slot name="head" />
+    {CF_ANALYTICS_TOKEN && (
+      <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: CF_ANALYTICS_TOKEN })}></script>
+    )}
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">{SITE_TITLE}</a>
+      <nav>
+        {nav.map((n) => (
+          <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a>
+        ))}
+        <a href={LINKEDIN_URL} rel="me noopener" target="_blank">LinkedIn</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p class="disclaimer">{DISCLAIMER}</p>
+      <p>
+        © {new Date().getFullYear()} {AUTHOR}
+        {' · '}<a href={LINKEDIN_URL} rel="me noopener">LinkedIn</a>
+        {' · '}<a href={GITHUB_URL} rel="me noopener">GitHub</a>
+        {' · '}<a href="/rss.xml">RSS</a>
+      </p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+:root {
+  --fg: #1d2330;
+  --muted: #5b6475;
+  --bg: #ffffff;
+  --accent: #1f5fbf;
+  --border: #e3e6ec;
+  --code-bg: #f5f7fa;
+  --max: 720px;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; color: var(--fg); background: var(--bg);
+  font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main, .site-header, .site-footer { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+main { padding-top: 1rem; padding-bottom: 3rem; }
+a { color: var(--accent); }
+img { max-width: 100%; height: auto; }
+h1, h2, h3 { line-height: 1.25; }
+.site-header {
+  display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: baseline;
+  justify-content: space-between; padding-top: 1.25rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.brand { font-weight: 700; font-size: 1.15rem; color: var(--fg); text-decoration: none; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 1rem; }
+.site-header nav a { color: var(--muted); text-decoration: none; }
+.site-header nav a[aria-current="page"], .site-header nav a:hover { color: var(--fg); }
+.site-footer { border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; padding-top: 1rem; padding-bottom: 2rem; }
+.disclaimer { font-size: .9rem; color: var(--muted); font-style: italic; }
+.tagline { font-size: 1.2rem; font-weight: 600; }
+.meta { color: var(--muted); margin-top: -.5rem; }
+.post-list { list-style: none; padding: 0; }
+.post-list li { display: flex; gap: 1rem; padding: .35rem 0; }
+.post-list time { color: var(--muted); min-width: 7.5rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 480px) { .post-list li { flex-direction: column; gap: 0; } }
+.tags { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem 1rem; }
+.draft-banner, .draft-tag { background: #fff3cd; color: #7a5b00; padding: .1rem .5rem; border-radius: 4px; font-size: .85rem; }
+.draft-tag { margin-left: .5rem; }
+pre { padding: 1rem; border-radius: 6px; overflow-x: auto; font-size: .9rem; }
+code { font-size: .92em; }
+:not(pre) > code { background: var(--code-bg); padding: .1em .35em; border-radius: 4px; }
+table { border-collapse: collapse; width: 100%; display: block; overflow-x: auto; }
+th, td { border: 1px solid var(--border); padding: .4rem .6rem; text-align: left; }
+blockquote { border-left: 3px solid var(--border); margin-left: 0; padding-left: 1rem; color: var(--muted); }

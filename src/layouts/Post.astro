@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Base from './Base.astro';
+import { formatDate, slugifyTag } from '../utils';
+
+type Props = CollectionEntry<'blog'>['data'];
+const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, draft } = Astro.props;
+---
+<Base title={title} description={description} image={heroImage?.src} type="article">
+  <article class="prose">
+    {draft && <p class="draft-banner">DRAFT — not visible in production</p>}
+    <h1>{title}</h1>
+    <p class="meta">
+      <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+      {updatedDate && <> · Updated <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time></>}
+    </p>
+    {tags.length > 0 && (
+      <ul class="tags">{tags.map((t) => <li><a href={`/tags/${slugifyTag(t)}/`}>#{t}</a></li>)}</ul>
+    )}
+    {heroImage && <Image src={heroImage} alt={heroAlt ?? ''} widths={[720, 1440]} sizes="(max-width: 760px) 100vw, 720px" />}
+    <slot />
+  </article>
+</Base>
