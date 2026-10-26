@@ -30,7 +30,9 @@ The platform is moving:
 - **UDE changes the game.** The unified developer experience means developing locally and deploying to the cloud, a workflow that's made for Git.
 - **TFVC isn't dead.** If it works for your team, you're not doing it wrong.
 
-The best time to plan your move is before you have to.
+## TFVC vs Git at a glance
+
+Here's how the two compare on the things that matter day to day for an F&O team, from how you branch and review code to how well each fits the unified developer experience.
 
 | | TFVC | Git |
 |---|---|---|
