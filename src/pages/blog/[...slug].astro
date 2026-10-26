@@ -4,12 +4,15 @@ import Post from '../../layouts/Post.astro';
 import { getPosts } from '../../utils';
 
 export async function getStaticPaths() {
-  const posts = await getPosts();
-  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+  const posts = await getPosts(); // newest first
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: { post, next: posts[i - 1], prev: posts[i + 1] },
+  }));
 }
-const { post } = Astro.props;
+const { post, prev, next } = Astro.props;
 const { Content } = await render(post);
 ---
-<Post {...post.data}>
+<Post post={post} prev={prev} next={next}>
   <Content />
 </Post>

@@ -1,0 +1,17 @@
+---
+// Shows src/assets/headshot.(jpg|jpeg|png|webp) if present, otherwise initials.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { AUTHOR } from '../consts';
+
+interface Props { size?: number; class?: string; eager?: boolean }
+const { size = 200, class: cls = '', eager = false } = Astro.props;
+const found = import.meta.glob<{ default: ImageMetadata }>('../assets/headshot.{jpg,jpeg,png,webp}', { eager: true });
+const img = Object.values(found)[0]?.default;
+---
+{img ? (
+  <Image src={img} alt={AUTHOR} width={size} height={size} densities={[1, 2]}
+    class={`avatar ${cls}`} loading={eager ? 'eager' : 'lazy'} />
+) : (
+  <div class={`avatar avatar-fallback ${cls}`} role="img" aria-label={AUTHOR}>JT</div>
+)}

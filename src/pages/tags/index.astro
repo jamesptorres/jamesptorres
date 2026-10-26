@@ -6,9 +6,11 @@ const counts = new Map<string, number>();
 posts.flatMap((p) => p.data.tags).forEach((t) => counts.set(t, (counts.get(t) ?? 0) + 1));
 const tags = [...counts].sort((a, b) => a[0].localeCompare(b[0]));
 ---
-<Base title="Tags" description="Posts by topic.">
-  <h1>Tags</h1>
-  {tags.length === 0 ? <p>No tags yet.</p> : (
-    <ul class="tags">{tags.map(([t, n]) => <li><a href={`/tags/${slugifyTag(t)}/`}>#{t}</a> ({n})</li>)}</ul>
-  )}
+<Base title="Tags" description="Browse posts by topic.">
+  <div class="container">
+    <header class="page-head"><h1>Tags</h1><p>Browse posts by topic.</p></header>
+    {tags.length === 0 ? <div class="empty">No tags yet.</div> : (
+      <ul class="chips">{tags.map(([t, n]) => <li><a class="chip" href={`/tags/${slugifyTag(t)}/`}>{t} · {n}</a></li>)}</ul>
+    )}
+  </div>
 </Base>

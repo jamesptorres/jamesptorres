@@ -13,3 +13,8 @@ export const slugifyTag = (t: string) =>
 
 export const formatDate = (d: Date) =>
   d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+
+export function readingTime(body = '') {
+  const words = body.replace(/```[\s\S]*?```/g, ' ').split(/\s+/).filter(Boolean).length;
+  return `${Math.max(1, Math.round(words / 230))} min read`;
+}

@@ -1,0 +1,36 @@
+---
+import { SITE_TITLE, LINKEDIN_URL } from '../consts';
+import Icon from './Icon.astro';
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/blog/', label: 'Blog' },
+  { href: '/contributions/', label: 'Contributions' },
+  { href: '/about/', label: 'About' },
+];
+---
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label={`${SITE_TITLE} home`}>
+      <span class="monogram" aria-hidden="true">JT</span>
+      <span class="brand-text">{SITE_TITLE}</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      {nav.map((n) => (
+        <a href={n.href} aria-current={path.startsWith(n.href) ? 'page' : undefined}>{n.label}</a>
+      ))}
+      <a class="icon-btn" href={LINKEDIN_URL} rel="me noopener" target="_blank" aria-label="LinkedIn"><Icon name="linkedin" /></a>
+      <button class="icon-btn theme-toggle" type="button" aria-label="Toggle dark mode">
+        <Icon name="moon" class="moon" /><Icon name="sun" class="sun" />
+      </button>
+    </nav>
+  </div>
+</header>
+<script>
+  const btn = document.querySelector('.theme-toggle');
+  btn?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('theme', next); } catch {}
+  });
+</script>

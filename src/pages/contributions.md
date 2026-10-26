@@ -2,9 +2,8 @@
 layout: ../layouts/Page.astro
 title: Contributions
 description: Talks, community answers, open-source repos, and videos.
+intro: A running log of community work, newest first.
 ---
-
-A running log of community work. Newest first.
 
 ## Talks & sessions
 

@@ -1,16 +1,61 @@
 ---
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
+import Avatar from '../components/Avatar.astro';
+import Icon from '../components/Icon.astro';
 import { getPosts } from '../utils';
-import { SITE_TAGLINE, AUTHOR } from '../consts';
+import { SITE_TAGLINE } from '../consts';
 const posts = (await getPosts()).slice(0, 5);
+const topics = [
+  { icon: 'erp', title: 'Dynamics 365 F&O', text: 'Practical notes on X++, extensions, data entities, integrations, and delivery.', tag: 'd365-fo' },
+  { icon: 'ai', title: 'AI in ERP', text: 'Copilots, agents, and what changes when ERP work becomes conversational.', tag: 'ai' },
+  { icon: 'headless', title: 'Headless ERP', text: 'APIs first, UI optional. Composable architectures and where ERP is heading.', tag: 'headless-erp' },
+] as const;
 ---
 <Base>
   <section class="hero">
-    <p class="tagline">{SITE_TAGLINE}</p>
-    <p>Hi, I'm {AUTHOR}. I write about Dynamics 365 Finance &amp; Operations, AI in ERP, and where headless ERP is going. <a href="/about/">More about me →</a></p>
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">{SITE_TAGLINE.split('.')[0]}</p>
+        <h1>Practical notes on ERP, <span class="muted">from Dynamics 365 to headless.</span></h1>
+        <p class="lede">
+          I'm James Paul Torres. I write about building on Dynamics 365 Finance &amp; Operations,
+          how AI is reshaping ERP, and the shift toward headless, API-first systems.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/blog/">Read the blog <Icon name="arrow" class="btn-icon" /></a>
+          <a class="btn btn-ghost" href="/about/">About me</a>
+        </div>
+      </div>
+      <Avatar size={200} eager />
+    </div>
   </section>
-  <h2>Recent posts</h2>
-  <PostList posts={posts} />
-  <p><a href="/blog/">All posts →</a></p>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head"><h2>What I write about</h2></div>
+      <div class="topics">
+        {topics.map((t) => (
+          <a class="topic" href={`/tags/${t.tag}/`}>
+            <div class="topic-icon"><Icon name={t.icon} /></div>
+            <h3>{t.title}</h3>
+            <p>{t.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Latest writing</h2>
+        <a href="/blog/">All posts →</a>
+      </div>
+      <PostList posts={posts} />
+    </div>
+  </section>
 </Base>
+<style>
+  .btn :global(.btn-icon) { width: 16px; height: 16px; }
+</style>

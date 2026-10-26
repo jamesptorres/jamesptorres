@@ -15,8 +15,8 @@ draft: true         # flip to false when ready to publish
 
 ## The approach
 
-```xpp
-// code sample
+```csharp
+// X++ sample: Shiki has no X++ grammar, csharp highlights it well
 ```
 
 ## Gotchas

@@ -6,6 +6,9 @@ export const SITE_TAGLINE =
 export const SITE_DESCRIPTION =
   'Notes by James Paul Torres on Dynamics 365 Finance & Operations, AI in ERP, and headless ERP.';
 export const AUTHOR = 'James Paul Torres';
+export const AUTHOR_ROLE = 'Dynamics 365 F&O architect and developer';
+export const AUTHOR_BIO =
+  'I build and integrate Dynamics 365 Finance & Operations solutions and write about where ERP is heading: AI, agents, and headless architectures.';
 export const HANDLE = 'jamesptorres';
 export const LINKEDIN_URL = `https://www.linkedin.com/in/${HANDLE}/`;
 export const GITHUB_URL = `https://github.com/${HANDLE}`;

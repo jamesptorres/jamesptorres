@@ -16,9 +16,17 @@ Set `draft: false`, commit, push to `main`. Live in ~1-2 minutes.
 - Tags: lowercase, hyphenated (`d365-fo`, `ai`, `headless-erp`).
 - Files starting with `_` in `src/content/blog/` are ignored.
 
+## Headshot
+
+Drop a square photo at `src/assets/headshot.jpg` (or .png/.webp), at least 400x400. It appears on the home page, About page, post bylines, and author card. Without it, a "JT" monogram shows instead.
+
+## Code blocks
+
+Shiki has no X++ grammar. Use ```` ```csharp ```` for X++ snippets; it highlights well.
+
 ## Site settings
 
-`src/consts.ts`: title, tagline, links, disclaimer, Cloudflare Web Analytics token.
+`src/consts.ts`: title, tagline, author bio, links, disclaimer, Cloudflare Web Analytics token.
 
 ## One-time setup
 

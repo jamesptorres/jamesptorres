@@ -6,6 +6,9 @@ export default defineConfig({
   site: 'https://jamesptorres.com',
   integrations: [sitemap()],
   markdown: {
-    shikiConfig: { theme: 'github-light' },
+    shikiConfig: {
+      themes: { light: 'github-light', dark: 'github-dark-dimmed' },
+      defaultColor: false,
+    },
   },
 });

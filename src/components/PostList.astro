@@ -1,15 +1,27 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate } from '../utils';
-interface Props { posts: CollectionEntry<'blog'>[] }
-const { posts } = Astro.props;
+import { formatDate, readingTime, slugifyTag } from '../utils';
+interface Props { posts: CollectionEntry<'blog'>[]; showTags?: boolean }
+const { posts, showTags = true } = Astro.props;
 ---
-{posts.length === 0 ? <p>No posts yet. Soon.</p> : (
+{posts.length === 0 ? (
+  <div class="empty">First posts are on the way. <a href="/rss.xml">Subscribe via RSS</a> to catch them.</div>
+) : (
   <ul class="post-list">
     {posts.map((p) => (
-      <li>
-        <time datetime={p.data.pubDate.toISOString()}>{formatDate(p.data.pubDate)}</time>
-        <a href={`/blog/${p.id}/`}>{p.data.title}</a>{p.data.draft && <span class="draft-tag">draft</span>}
+      <li class="post-item">
+        <a class="post-link" href={`/blog/${p.id}/`}>
+          <time class="post-date" datetime={p.data.pubDate.toISOString()}>{formatDate(p.data.pubDate)}</time>
+          <div>
+            <h3 class="post-title">{p.data.title}</h3>
+            <p class="post-desc">{p.data.description}</p>
+            <div class="post-meta-row">
+              {p.data.draft && <span class="draft-banner">Draft</span>}
+              <span class="chip">{readingTime(p.body)}</span>
+              {showTags && p.data.tags.map((t) => <span class="chip chip-accent">{t}</span>)}
+            </div>
+          </div>
+        </a>
       </li>
     ))}
   </ul>

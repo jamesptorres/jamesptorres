@@ -2,6 +2,8 @@
 layout: ../layouts/Page.astro
 title: About
 description: About James Paul Torres.
+photo: true
+intro: Dynamics 365 F&O, AI in ERP, and the road to headless.
 ---
 
 <!-- PLACEHOLDER: draft in step 3 -->
@@ -18,5 +20,3 @@ I'm **James Paul Torres**. I work with Microsoft Dynamics 365 Finance & Operatio
 
 - LinkedIn: [jamesptorres](https://www.linkedin.com/in/jamesptorres/)
 - GitHub: [jamesptorres](https://github.com/jamesptorres)
-
-*Opinions are my own and do not represent my employer, clients, or Microsoft.*
