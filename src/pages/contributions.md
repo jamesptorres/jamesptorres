@@ -8,9 +8,9 @@ intro: Credentials and community work, newest first.
 ## Certifications
 
 - **[Microsoft Certified: Dynamics 365: Finance and Operations Apps Developer Associate](https://learn.microsoft.com/en-us/credentials/certifications/d365-finance-and-operations-apps-developer-associate/)**<br>
-  Earned November 30, 2021 · Active through November 30, 2027 · [Verify on Microsoft Learn](https://learn.microsoft.com/en-us/users/jamestorres-2550/credentials/certification/d365-finance-and-operations-apps-developer-associate?tab=credentials-tab)
+  Earned November 30, 2021 · Active through November 30, 2027
 - **Microsoft Specialist: Microsoft Dynamics AX Development Introduction**<br>
-  Earned March 23, 2017 · [Verify on Microsoft Learn](https://learn.microsoft.com/en-us/users/jamestorres-2550/credentials/certification-o-/nouid.2669?tab=credentials-tab)
+  Earned March 23, 2017
 - **Scrum Master**<br>
   Earned 2017
 
