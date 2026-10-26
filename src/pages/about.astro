@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import Avatar from '../components/Avatar.astro';
 import { LINKEDIN_URL } from '../consts';
 import dogs from '../assets/about/dogs.jpg';
 import huayna from '../assets/about/huayna-picchu.jpg';
@@ -20,14 +21,17 @@ const photos = [
   { src: dogs, alt: 'Two greyhounds and a whippet standing on a park path', caption: 'Geo, Max, and Gigi' },
   { src: huayna, alt: 'James and his wife with arms raised on the summit of Huayna Picchu, Machu Picchu below', caption: 'Top of Huayna Picchu, Peru' },
   { src: blueHole, alt: 'Aerial view of the Great Blue Hole from a small plane', caption: 'Flying over the Great Blue Hole, Belize' },
-  { src: waterfall, alt: 'James and his wife in front of a waterfall in a mossy rock canyon', caption: 'Chasing waterfalls' },
+  { src: waterfall, alt: 'James and his wife in front of a waterfall in a mossy rock canyon in Iceland', caption: 'Chasing waterfalls in Iceland' },
 ];
 ---
 <Base title="About" description="About James Torres: Dynamics 365 F&O architect, tinkerer, traveler, and dog dad.">
   <div class="container-read">
-    <header class="page-head">
-      <h1>About me</h1>
-      <p>Problem solver, tinkerer, and long-time lurker finally hitting "post".</p>
+    <header class="about-head">
+      <Avatar size={280} eager />
+      <div>
+        <h1>About me</h1>
+        <p>Problem solver, tinkerer, and long-time lurker finally hitting "post".</p>
+      </div>
     </header>
     <ul class="quick-facts" aria-label="Quick facts">
       {facts.map((f) => <li>{f}</li>)}

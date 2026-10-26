@@ -100,7 +100,10 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; }
 :root[data-theme='dark'] .welcome-photo-fallback { filter: brightness(0.45) saturate(0.8); }
 .welcome-card { grid-column: 1 / 7; grid-row: 1; position: relative; z-index: 1; background: var(--bg); border-radius: 16px;
   padding: 40px 40px 36px; box-shadow: 0 12px 40px rgb(0 0 0 / 0.08); border: 1px solid var(--border); }
-.welcome-card h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 0 0 14px; }
+.welcome-greeting { display: flex; align-items: center; gap: 16px; margin: 0 0 16px; }
+.welcome-greeting .avatar { width: 72px; height: 72px; font-size: 24px; }
+.welcome-card h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 0; }
+@media (max-width: 420px) { .welcome-greeting .avatar { width: 56px; height: 56px; } .welcome-card h1 { font-size: 1.8rem; } }
 .welcome-card p { font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.6; color: var(--fg-muted); margin: 0 0 12px; }
 .welcome-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 22px; font-size: 15px; }
 .btn { display: inline-block; background: var(--accent); color: #fff; font-weight: 600; padding: 10px 18px; border-radius: 8px; }
