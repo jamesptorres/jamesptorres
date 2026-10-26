@@ -16,6 +16,7 @@ intro: Credentials and community work, newest first.
 | Oct 12, 2026 | [F/SCM Tech Medic Desk](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=2370) | Community Summit North America |
 | Sep 14, 2026 | Talk to your ERP | Caf2Code customer webinar (private) |
 | Mar 19, 2026 | [AI for Everyday Use](https://www.linkedin.com/feed/update/urn:li:share:7434082599364460544/) | Latinos Leading the Movement AI Literacy Series, Indianapolis |
+| Feb 27, 2025 | [Enterprise Performance Engineering: Diagnosing & Solving D365 F&O & Microsoft Ecosystem Issues](https://community.dynamics.com/usergroups/eventdetails/?eventid=d4f9f630-bade-ef11-a730-000d3a4d422e) | Indiana AX/D365 User Group |
 
 ## Certifications
 
