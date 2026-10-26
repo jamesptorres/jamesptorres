@@ -1,0 +1,125 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import { LINKEDIN_URL } from '../consts';
+import dogs from '../assets/about/dogs.jpg';
+import huayna from '../assets/about/huayna-picchu.jpg';
+import blueHole from '../assets/about/blue-hole.jpg';
+import waterfall from '../assets/about/waterfall.jpg';
+
+const facts = [
+  'Based in Indiana',
+  '10+ years in Dynamics',
+  'Travels with my wife',
+  'Dog dad of three',
+  'Vegetarian with a Carolina Reaper habit',
+  'Natural tinkerer',
+];
+
+const photos = [
+  { src: dogs, alt: 'Two greyhounds and a whippet standing on a park path', caption: 'Geo, Max, and Gigi' },
+  { src: huayna, alt: 'James and his wife with arms raised on the summit of Huayna Picchu, Machu Picchu below', caption: 'Top of Huayna Picchu, Peru' },
+  { src: blueHole, alt: 'Aerial view of the Great Blue Hole from a small plane', caption: 'Flying over the Great Blue Hole, Belize' },
+  { src: waterfall, alt: 'James and his wife in front of a waterfall in a mossy rock canyon', caption: 'Chasing waterfalls' },
+];
+---
+<Base title="About" description="About James Torres: Dynamics 365 F&O architect, tinkerer, traveler, and dog dad.">
+  <div class="container-read">
+    <header class="page-head">
+      <h1>About me</h1>
+      <p>Problem solver, tinkerer, and long-time lurker finally hitting "post".</p>
+    </header>
+    <ul class="quick-facts" aria-label="Quick facts">
+      {facts.map((f) => <li>{f}</li>)}
+    </ul>
+  </div>
+
+  <div class="container">
+    <div class="photo-row">
+      {photos.map((p) => (
+        <figure>
+          <Image src={p.src} alt={p.alt} widths={[400, 800]} sizes="(max-width: 700px) 50vw, 250px" />
+          <figcaption>{p.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+
+  <div class="container-read">
+    <div class="prose">
+      <h2>Hi, I'm James</h2>
+      <p>
+        I've spent more than ten years in the Microsoft business applications world, most of it in
+        Dynamics 365 Finance &amp; Operations. I'm also a long-time lurker, first-time poster. For years
+        I've leaned on this community's blogs, forum answers, and conference sessions to get past my own
+        hurdles.
+      </p>
+      <p>
+        Speaking at Community Summit this year made something click: if something I write helps even one
+        person get past a hurdle, or see a problem from a new angle, it's worth doing. This blog is my way
+        of giving back to the community that built that foundation, and of joining the conversation instead
+        of just reading it.
+      </p>
+
+      <h2>What you'll find here</h2>
+      <p>
+        Posts based on my own experiences and challenges. When I write a guide, I'll start with the scenario
+        I was actually trying to solve, so you can tell whether it fits yours. Expect D365 F&amp;O development
+        and architecture, practical uses of AI in ERP, and some thinking out loud about where headless ERP
+        is going.
+      </p>
+
+      <h2>How I got here</h2>
+      <p>
+        I landed in Dynamics by accident. I was hunting for an internship and found consulting. After an
+        internship at a pure development shop, I knew which I preferred. Writing code is fun, but helping
+        a client make the system work for their secret sauce, the business processes that make them who
+        they are, is what kept me in this space.
+      </p>
+
+      <h2>What I do</h2>
+      <p>
+        I'm a technically focused architect specializing in D365 F&amp;O, with experience across the
+        connected Microsoft stack, including Power Platform and Azure. Teams tend to pull me in when a
+        problem crosses boundaries: a performance issue that isn't where it looks, an integration that has
+        to write back, a development process that needs modernizing, or putting AI to practical use in
+        X++ and configuration.
+      </p>
+      <p>The full résumé lives on <a href={LINKEDIN_URL} rel="me noopener">LinkedIn</a>.</p>
+
+      <h2>Helping the next developer</h2>
+      <p>
+        Some of my favorite work has been internal: building an easier path for newer X++ developers to
+        understand the stack, and giving them enough breadth to stand on their own two feet without having
+        to figure everything out alone. This blog is an extension of that.
+      </p>
+
+      <h2>Off the clock</h2>
+      <p>
+        I'm a natural tinkerer and all-around handyman. My wife and I travel whenever we can to explore the
+        world and pick up new perspectives. At home I'm a proud dog dad to two greyhounds, Geo and Gigi, and
+        a whippet named Max. I'm vegetarian, and I like my food spicy. Fresh Carolina Reaper spicy.
+      </p>
+
+      <div class="signoff">
+        <p>
+          Thanks for stopping by. If something here helps, or you'd approach it differently, come say hi on{' '}
+          <a href={LINKEDIN_URL} rel="me noopener">LinkedIn</a>.
+        </p>
+        <p class="signature">Keep tinkering,<br />James</p>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .quick-facts { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .quick-facts li { font-size: 14px; padding: 5px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-weight: 500; }
+  .photo-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 0 0 48px; }
+  .photo-row figure { margin: 0; }
+  .photo-row :global(img) { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; }
+  .photo-row figcaption { font-size: 13.5px; color: var(--fg-subtle); margin-top: 8px; }
+  @media (max-width: 700px) { .photo-row { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+  .signoff { margin-top: 3em; padding-top: 1.5em; border-top: 1px solid var(--border); }
+  .signature { font-style: italic; }
+</style>
