@@ -9,9 +9,9 @@ import { AUTHOR, AUTHOR_BIO, LINKEDIN_URL } from '../consts';
 
 interface Props { post: CollectionEntry<'blog'>; more: CollectionEntry<'blog'>[] }
 const { post, more } = Astro.props;
-const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, draft } = post.data;
+const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, draft, video } = post.data;
 ---
-<Base title={title} description={description} image={heroImage?.src} type="article">
+<Base title={title} description={description} image={heroImage?.src} type="article" video={video}>
   <article>
     <header class="container-read article-head">
       {draft && <p><span class="draft-banner">Draft: not visible on the live site</span></p>}

@@ -9,8 +9,10 @@ interface Props {
   description?: string;
   image?: string;
   type?: 'website' | 'article';
+  video?: { url: string; type?: string; width?: number; height?: number };
 }
-const { title, description = SITE_DESCRIPTION, image = '/og-default.png', type = 'website' } = Astro.props;
+const { title, description = SITE_DESCRIPTION, image = '/og-default.png', type = 'website', video } = Astro.props;
+const videoUrl = video ? new URL(video.url, Astro.site).toString() : undefined;
 const fullTitle = title ? `${title} | ${SITE_TITLE}` : `${AUTHOR} | ${AUTHOR_ROLE}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
@@ -38,6 +40,15 @@ const ogImage = new URL(image, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    {video && videoUrl && (
+      <>
+        <meta property="og:video" content={videoUrl} />
+        <meta property="og:video:secure_url" content={videoUrl} />
+        <meta property="og:video:type" content={video.type ?? 'video/mp4'} />
+        <meta property="og:video:width" content={String(video.width ?? 1280)} />
+        <meta property="og:video:height" content={String(video.height ?? 720)} />
+      </>
+    )}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />

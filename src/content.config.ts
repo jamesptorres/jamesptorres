@@ -14,6 +14,15 @@ const blog = defineCollection({
       draft: z.boolean().default(false),
       heroImage: image().optional(),
       heroAlt: z.string().optional(),
+      // Optional video for link previews (og:video). Direct file URL (mp4/webm) or a path under public/.
+      video: z
+        .object({
+          url: z.string(),
+          type: z.string().default('video/mp4'),
+          width: z.number().default(1280),
+          height: z.number().default(720),
+        })
+        .optional(),
     }),
 });
 
