@@ -19,9 +19,9 @@ intro: Credentials and community work, newest first.
 | Date | Exam |
 |------|------|
 | Nov 30, 2021 | [MB-300: Microsoft Dynamics 365: Core Finance and Operations](https://learn.microsoft.com/en-us/credentials/certifications/exams/mb-300/) |
-| Mar 10, 2020 | MB-500: Microsoft Dynamics 365: Finance and Operations Apps Developer |
+| Mar 10, 2020 | [MB-500: Microsoft Dynamics 365: Finance and Operations Apps Developer](https://learn.microsoft.com/en-us/credentials/certifications/d365-finance-and-operations-apps-developer-associate/) |
 | Jan 29, 2019 | [MB6-894: Development, Extensions, and Deployment for Microsoft Dynamics 365 Finance](https://learn.microsoft.com/en-us/credentials/certifications/exams/mb6-894/) |
-| Mar 23, 2017 | Microsoft Dynamics AX Development Introduction |
+| Mar 23, 2017 | MB-890: Microsoft Dynamics AX Development Introduction |
 
 ## Education
 
