@@ -7,14 +7,13 @@ intro: Credentials and community work, newest first.
 
 ## Speaking
 
-**Community Summit North America 2026**
-
-| Date | Session |
-|------|---------|
-| Oct 14, 2026 | [AI coding tools for X++: From Vibe coding to Production](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=870) |
-| Oct 13, 2026 | [From BPP to D365 F&O: The Write-Back We All Deserve (Lessons Learned the Hard Way)](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=1976) |
-| Oct 13, 2026 | [Do You Git It? Migrating D365 F&O from TFVC to Git](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=1951) |
-| Oct 12 & 14, 2026 | [F/SCM Tech Medic Desk](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=2370) |
+| Date | Session | Event |
+|------|---------|-------|
+| Oct 14, 2026 | [AI coding tools for X++: From Vibe coding to Production](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=870) | Community Summit North America |
+| Oct 14, 2026 | [F/SCM Tech Medic Desk](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=2377) | Community Summit North America |
+| Oct 13, 2026 | [From BPP to D365 F&O: The Write-Back We All Deserve (Lessons Learned the Hard Way)](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=1976) | Community Summit North America |
+| Oct 13, 2026 | [Do You Git It? Migrating D365 F&O from TFVC to Git](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=1951) | Community Summit North America |
+| Oct 12, 2026 | [F/SCM Tech Medic Desk](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=2370) | Community Summit North America |
 
 ## Certifications
 
