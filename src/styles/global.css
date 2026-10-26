@@ -108,8 +108,8 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; }
 :root[data-theme='dark'] .btn { color: #0f1a1c; }
 @media (max-width: 760px) {
   .welcome-hero { display: block; padding: 24px 0 8px; }
-  .welcome-photo { aspect-ratio: 16 / 10; }
-  .welcome-card { margin: -48px 12px 0; padding: 28px 22px 26px; }
+  .welcome-photo { aspect-ratio: 4 / 3; }
+  .welcome-card { margin: -28px 12px 0; padding: 26px 22px 24px; }
 }
 
 .section { margin-top: 48px; }
