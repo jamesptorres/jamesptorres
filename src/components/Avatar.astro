@@ -13,5 +13,6 @@ const img = Object.values(found)[0]?.default;
   <Image src={img} alt={AUTHOR} width={size} height={size} densities={[1, 2]}
     class={`avatar ${cls}`} loading={eager ? 'eager' : 'lazy'} />
 ) : (
-  <div class={`avatar avatar-fallback ${cls}`} role="img" aria-label={AUTHOR}>JT</div>
+  <div class={`avatar avatar-fallback ${cls}`} role="img" aria-label={AUTHOR}
+    style={`width:${size}px;height:${size}px;font-size:${Math.round(size * 0.34)}px`}>JT</div>
 )}

@@ -18,7 +18,7 @@ Set `draft: false`, commit, push to `main`. Live in ~1-2 minutes.
 
 ## Headshot
 
-Drop a square photo at `src/assets/headshot.jpg` (or .png/.webp), at least 400x400. It appears on the home page, About page, post bylines, and author card. Without it, a "JT" monogram shows instead.
+Drop a square photo at `src/assets/headshot.jpg` (or .png/.webp), at least 400x400. It appears on the home page intro, the About page, and the sign-off at the end of each post. Without it, a "JT" monogram shows instead.
 
 ## Code blocks
 

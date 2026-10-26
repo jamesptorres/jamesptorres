@@ -2,60 +2,23 @@
 import Base from '../layouts/Base.astro';
 import PostList from '../components/PostList.astro';
 import Avatar from '../components/Avatar.astro';
-import Icon from '../components/Icon.astro';
 import { getPosts } from '../utils';
-import { SITE_TAGLINE } from '../consts';
-const posts = (await getPosts()).slice(0, 5);
-const topics = [
-  { icon: 'erp', title: 'Dynamics 365 F&O', text: 'Practical notes on X++, extensions, data entities, integrations, and delivery.', tag: 'd365-fo' },
-  { icon: 'ai', title: 'AI in ERP', text: 'Copilots, agents, and what changes when ERP work becomes conversational.', tag: 'ai' },
-  { icon: 'headless', title: 'Headless ERP', text: 'APIs first, UI optional. Composable architectures and where ERP is heading.', tag: 'headless-erp' },
-] as const;
+import { LINKEDIN_URL } from '../consts';
+const posts = (await getPosts()).slice(0, 10);
 ---
 <Base>
-  <section class="hero">
-    <div class="container hero-grid">
+  <div class="wrap">
+    <section class="intro">
+      <Avatar size={88} eager />
       <div>
-        <p class="eyebrow">{SITE_TAGLINE.split('.')[0]}</p>
-        <h1>Practical notes on ERP, <span class="muted">from Dynamics 365 to headless.</span></h1>
-        <p class="lede">
-          I'm James Paul Torres. I write about building on Dynamics 365 Finance &amp; Operations,
-          how AI is reshaping ERP, and the shift toward headless, API-first systems.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="/blog/">Read the blog <Icon name="arrow" class="btn-icon" /></a>
-          <a class="btn btn-ghost" href="/about/">About me</a>
-        </div>
+        <p>Hi, I'm James. I work with Microsoft Dynamics 365 Finance &amp; Operations, and this is where I write things down.</p>
+        <p>Mostly practical notes from real projects, plus some thinking out loud about where ERP is going: AI, agents, and the move toward headless systems.</p>
+        <p class="sans" style="font-size:15px;color:var(--fg-subtle)"><a href="/about/">More about me</a> · <a href={LINKEDIN_URL} rel="me noopener">LinkedIn</a> · <a href="/rss.xml">RSS</a></p>
       </div>
-      <Avatar size={200} eager />
-    </div>
-  </section>
+    </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-head"><h2>What I write about</h2></div>
-      <div class="topics">
-        {topics.map((t) => (
-          <a class="topic" href={`/tags/${t.tag}/`}>
-            <div class="topic-icon"><Icon name={t.icon} /></div>
-            <h3>{t.title}</h3>
-            <p>{t.text}</p>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head">
-        <h2>Latest writing</h2>
-        <a href="/blog/">All posts →</a>
-      </div>
-      <PostList posts={posts} />
-    </div>
-  </section>
+    <h2 class="section-title">Recent writing</h2>
+    <PostList posts={posts} />
+    {posts.length >= 10 && <p class="sans" style="font-size:15px"><a href="/blog/">All posts</a></p>}
+  </div>
 </Base>
-<style>
-  .btn :global(.btn-icon) { width: 16px; height: 16px; }
-</style>

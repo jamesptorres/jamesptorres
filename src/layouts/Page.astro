@@ -6,12 +6,10 @@ import Avatar from '../components/Avatar.astro';
 const { frontmatter } = Astro.props;
 ---
 <Base title={frontmatter.title} description={frontmatter.description}>
-  <div class="container-prose">
-    <header class="page-head">
-      {frontmatter.photo && <div class="page-photo"><Avatar size={120} eager /></div>}
-      <h1>{frontmatter.title}</h1>
-      {frontmatter.intro && <p>{frontmatter.intro}</p>}
-    </header>
+  <div class="wrap">
+    {frontmatter.photo && <div class="about-photo"><Avatar size={120} eager /></div>}
+    <h1 class="page-title" style={frontmatter.photo ? 'margin-top:24px' : undefined}>{frontmatter.title}</h1>
+    {frontmatter.intro && <p class="page-intro">{frontmatter.intro}</p>}
     <div class="prose">
       <slot />
     </div>
