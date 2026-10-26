@@ -14,6 +14,7 @@ intro: Credentials and community work, newest first.
 | Oct 13, 2026 | [From BPP to D365 F&O: The Write-Back We All Deserve (Lessons Learned the Hard Way)](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=1976) | Community Summit North America |
 | Oct 13, 2026 | [Do You Git It? Migrating D365 F&O from TFVC to Git](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=1951) | Community Summit North America |
 | Oct 12, 2026 | [F/SCM Tech Medic Desk](https://connect.summitna.com/8_0/sessions/session-details.cfm?scheduleid=2370) | Community Summit North America |
+| Sep 14, 2026 | Talk to your ERP | Caf2Code customer webinar (private) |
 
 ## Certifications
 
