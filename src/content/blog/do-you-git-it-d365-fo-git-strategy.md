@@ -5,7 +5,7 @@ pubDate: 2026-10-26
 tags: ["D365 F&O", "Technical"]
 heroImage: ./images/do-you-git-it/git-strategy-cover.png
 heroAlt: "Do You Git It? A Git strategy for Dynamics 365 F&O teams, with a diagram of commits moving between test and main branches"
-draft: true
+draft: false
 ---
 
 At Community Summit North America 2026, Cody Polodna and I presented *Do You Git It? Migrating D365 F&O from TFVC to Git*. We opened by asking the room three questions: who's still on TFVC, who's already on Git, and who's somewhere in between. Wherever you landed, this post is for you.
