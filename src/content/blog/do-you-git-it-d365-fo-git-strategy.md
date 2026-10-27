@@ -55,7 +55,7 @@ Answer these two and the rest falls into place.
 
 | | Clean cutover | Recent history | Full history |
 |---|---|---|---|
-| Tool | Import tool, no history | Import tool, up to 180 days | Git-TFS |
+| Tool | Import tool, no history, or manual migration | Import tool, up to 180 days | Git-TFS |
 | Effort | Lowest | Low | Highest |
 | Support | Microsoft | Microsoft | Community only |
 | Best for | Most teams | Teams wanting recent context | Strict audit needs |
@@ -99,16 +99,55 @@ Getting a developer working against the new repo is three steps:
 2. **Configure metadata:** set your custom metadata folder to the repo's `Metadata` folder.
 3. **Build and deploy** to your developer environment.
 
-Keep generated output and IDE files out of the repo. The essentials for your `.gitignore`:
+Keep build output, IDE files, and generated D365 files out of the repo. Here's a `.gitignore` based on one from a real project, with the client- and model-specific entries removed:
 
-```text
+```gitignore
+# Binaries and build artifacts
+*.dll
+*.pdb
+*.exe
 bin/
-obj/
 XppMetadata/
+Resources/
+
+# Log files
+*.log
+
+# User-specific or temporary files
 .vs/
+.suo
 *.user
-*.suo
+*.bak
+*.tmp
+temp/
+
+# Dynamics 365 generated files
+*.cache
+*.xref
+*.rdl
+*.BCL
+ABP.ElementNames.xml
+
+# Build results, at any folder depth
+**/BuildModelResult.xml
+**/BuildModelResult.err.xml
+**/BuildProjectResult.xml
+**/BuildProjectResult.err.xml
+**/CompileLabels.xml
+
+# AI assistant instructions (keep local)
+**/.github/copilot-instructions.md
 ```
+
+Ignoring `*.dll` is the right default, but some models need specific DLLs checked in, like a .NET library your X++ references. Re-include just those with a negated pattern:
+
+```gitignore
+!YourModel/bin/
+YourModel/bin/*
+!YourModel/bin/YourCompany.*.dll
+```
+
+The order matters: un-ignore the folder, ignore everything in it, then un-ignore only the files you need.
 
 One watch-out: switching Git branches can leave your environment out of sync with your code. Redeploy after switching.
 
