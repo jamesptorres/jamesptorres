@@ -235,9 +235,10 @@ Your repo holds your X++ only. ISV binaries come from an artifact feed, and the 
 
 1. **Take inventory.** Branches, binaries, ISVs, and in-flight work.
 2. **Make the two decisions.** How much history, how many repos.
-3. **Map a branch to each environment.** Start with feature, test, and main.
-4. **Move one pipeline to YAML.** Start small and prove the pattern.
-5. **Pick your cutover date,** and plan the code freeze.
+3. **Clean up TFVC.** Remove binaries and build output, and move ISV binaries to an artifact feed.
+4. **Map a branch to each environment.** Start with feature, test, and main.
+5. **Move one pipeline to YAML.** Start small and prove the pattern.
+6. **Pick your cutover date,** and plan the code freeze.
 
 ## Coming up in this series
 
