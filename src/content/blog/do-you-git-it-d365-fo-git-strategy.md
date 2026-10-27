@@ -3,7 +3,7 @@ title: "Do You Git It? A Git strategy for D365 F&O teams"
 description: "Starting a new D365 F&O project or moving off TFVC? The decisions that matter most: history, repos, branches, and pipelines. The roadmap for a series of hands-on guides."
 pubDate: 2026-10-26
 tags: ["D365 F&O", "Technical"]
-heroImage: ./images/do-you-git-it/cover-git-strategy.png
+heroImage: ./images/do-you-git-it/git-strategy-cover.png
 heroAlt: "Do You Git It? A Git strategy for Dynamics 365 F&O teams, with a diagram of commits moving between test and main branches"
 draft: true
 ---
