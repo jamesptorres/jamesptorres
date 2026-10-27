@@ -229,7 +229,7 @@ Your repo holds your X++ only. ISV binaries come from an artifact feed, and the 
 - **Branching:** Give developers easy-to-follow instructions. And remember, more branches mean more admin overhead.
 - **Pipelines:** Get a robot to write the YAML. AI coding tools are very good at it. And if you don't want to fight with artifact feeds, use blob storage.
 
-## What to do Monday
+## What to start today
 
 1. **Take inventory.** Branches, binaries, ISVs, and in-flight work.
 2. **Make the two decisions.** How much history, how many repos.
