@@ -172,11 +172,14 @@ Every team needs the core three: **feature → test → main**. Add a branch onl
 
 ### When production needs a fix
 
-1. Branch the hotfix off `main`.
-2. Validate it in the environment that mirrors production (pre-production, deployed from `main`), never in `test`, which carries unreleased work. Then deploy to production.
-3. Merge it back down through every layer to `test`.
+1. **Branch the hotfix off `main`.** Since `main` matches production, the fix starts from exactly what's running.
+2. **Promote it on its own,** or alongside other changes that are already tested and approved. Never promote from an environment that also holds untested work.
+3. **Validate it in pre-production** (deployed from `main`), then deploy to production.
+4. **Merge it back down** through every layer to `test`.
 
-A fix that isn't merged back down is a bug waiting to come back.
+The rule underneath: everything in the environment you validate against must be tested. If something in that environment isn't, remove it and re-test everything that's left before you promote. Otherwise you're signing off on changes nobody has checked.
+
+And a fix that isn't merged back down is a bug waiting to come back.
 
 ### Watch-outs
 
