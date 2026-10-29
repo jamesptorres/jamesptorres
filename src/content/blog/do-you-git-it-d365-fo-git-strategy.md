@@ -2,6 +2,7 @@
 title: "Do You Git It? A Git strategy for D365 F&O teams"
 description: "Starting a new D365 F&O project or moving off TFVC? The decisions that matter most: history, repos, branches, and pipelines. The roadmap for a series of hands-on guides."
 pubDate: 2026-10-26
+updatedDate: 2026-10-29
 tags: ["D365 F&O", "Technical"]
 heroImage: ./images/do-you-git-it/git-strategy-cover.png
 heroAlt: "Do You Git It? A Git strategy for Dynamics 365 F&O teams, with a diagram of commits moving between test and main branches"
@@ -44,7 +45,8 @@ Here's how the two compare on the things that matter day to day for an F&O team,
 | Separating codebases | One repo per project, split by folders | Many repos, each with its own history |
 | Large binaries | Handles well | LFS or artifact feeds recommended |
 | Learning curve | Simpler | Steeper at first |
-| Fit with UDE | Works | Natural fit |
+| UDE workflow (local dev, cloud deploy) | Works | Natural fit |
+| X++ history and compare in Visual Studio | Built in | Limited; use the DevOps repo or pull requests |
 | Future investment | Maintenance mode | Active |
 
 ## Two decisions to make first
@@ -171,7 +173,7 @@ Every team needs the core three: **feature → test → main**. Add a branch onl
 ### When production needs a fix
 
 1. Branch the hotfix off `main`.
-2. Validate it in a sandbox, then deploy to production.
+2. Validate it in the environment that mirrors production (pre-production, deployed from `main`), never in `test`, which carries unreleased work. Then deploy to production.
 3. Merge it back down through every layer to `test`.
 
 A fix that isn't merged back down is a bug waiting to come back.
