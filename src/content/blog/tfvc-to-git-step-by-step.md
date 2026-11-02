@@ -205,9 +205,20 @@ If the build fails or something is missing in the environment, a file didn't mak
 
 With `main` validated, create the rest of your branches from it.
 
-1. In Azure DevOps, go to **Repos > Branches** and select **New branch**.
-2. Name it **`test`** and base it on **`main`**.
-3. Repeat for any other environment branches your process needs, such as a UAT gate, each based on `main`.
+1. In Visual Studio's status bar, select the arrow next to the current branch name, then **...** and **Manage Branches**.
+
+![The Visual Studio branch picker opened from the status bar, with the more options button and Manage Branches highlighted](./images/tfvc-to-git/07-manage-branches.png)
+
+2. In the **Git Repository** window, expand **remotes/origin**, right-click **main**, and select **New Local Branch From...**.
+
+![The Visual Studio Git Repository window, with the remote main branch right-clicked and New Local Branch From highlighted](./images/tfvc-to-git/08-new-local-branch.png)
+
+3. Name the branch **`test`**, confirm it's based on **`origin/main`**, and select **Create**.
+
+![The Create a new branch dialog, with the branch name test, based on origin/main, and the Create button highlighted](./images/tfvc-to-git/09-create-test-branch.png)
+
+4. **Push** the new branch so it's published to Azure DevOps for the rest of the team.
+5. Repeat for any other environment branches your process needs, such as a UAT gate, each based on `origin/main`.
 
 To start, every branch is an exact copy of `main`, which is your production code. From here on, day-to-day work flows into `test`, and `main` only changes when you promote to production.
 
@@ -215,7 +226,7 @@ To start, every branch is an exact copy of `main`, which is your production code
 
 Step 4 copied only production. Anything further down your pipeline in TFVC, such as changes in development, test, or UAT that haven't reached production, still needs to come across.
 
-1. For each in-flight change, create a **feature branch off `test`**.
+1. For each in-flight change, create a **feature branch off `test`**. Use the same steps as Step 8, but right-click **test** under **remotes/origin** instead of **main**.
 2. Apply the change in that feature branch and commit it.
 3. Merge it into `test` through a **pull request**.
 4. From there, promote it the normal way, through pull requests from one branch to the next: feature → `test` → … → `main` (production), once it's ready to deploy.
