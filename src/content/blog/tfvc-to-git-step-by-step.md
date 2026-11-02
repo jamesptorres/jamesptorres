@@ -61,3 +61,20 @@ Next, get the new repo onto your development machine.
 ![The Visual Studio Connect to a Project window, with the Git repo selected under the project, the local clone path, and the Clone button highlighted](./images/tfvc-to-git/05-connect-clone.png)
 
 The `$/` entry under the project is your existing TFVC repo. For this step, pick the Git repo, which has the Git icon.
+
+## Step 3: Copy your models into the Git repo
+
+With the Git repo cloned, bring your code over from TFVC.
+
+1. Open your **TFVC workspace folder**, the local folder your TFVC workspace maps to.
+2. Copy the metadata folders for **only the models you want under source control** into your newly cloned Git repo, inside its `Metadata` folder:
+
+```text
+<GitRepo>
+└── Metadata/
+    ├── YourModel/
+    └── YourOtherModel/
+```
+
+Copy your own models only. Microsoft's standard packages, and ISV models you don't maintain, stay out of the repo.
+
