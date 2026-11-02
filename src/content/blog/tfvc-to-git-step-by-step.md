@@ -125,11 +125,6 @@ temp/
 
 *.cache
 
-/**/BuildModelResult.xml
-/**/BuildProjectResult.err.xml
-/**/BuildProjectResult.xml
-/**/CompileLabels.xml
-/**/BuildModelResult.err.xml
 # Addition custom model .xref files - /**/<ModelName>.xref
 
 # Custom model .dll references
@@ -155,3 +150,16 @@ A few notes on this file:
 - **Generic by design.** It covers the common F&O build output and user files. The commented-out lines are placeholders for model-specific rules.
 - **Model `.xref` files:** to ignore a custom model's cross-reference file, add a line like `/**/<ModelName>.xref`.
 - **DLLs a model needs:** `*.dll` ignores every DLL. If a model references a .NET library that has to be checked in, re-include just that file with the three commented lines under *Custom model .dll references*: un-ignore the model's `bin` folder, ignore everything in it, then un-ignore only the DLLs you need. The order matters.
+
+## Step 5: Review, commit, and push
+
+The last step is your first real commit.
+
+1. In Visual Studio, open **Git Changes** and **review the files listed under Changes**. Make sure nothing extra is being added, like build output or DLLs. If something slipped through, your `.gitignore` isn't working as expected. Fix it before you commit.
+2. Enter a commit message, such as **TFVC to Git migration**.
+3. Select the dropdown next to **Commit All**, then choose **Commit All and Push**.
+
+![The Visual Studio Git Changes window on the main branch, with the list of changes under the Metadata folder, the commit message "TFVC to Git migration", and the dropdown next to Commit All highlighted](./images/tfvc-to-git/06-commit-push.png)
+
+Your F&O code is now in Git. Check the repo in Azure DevOps to confirm the `Metadata` folder and your models are there.
+
