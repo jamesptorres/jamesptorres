@@ -115,7 +115,9 @@ C:\Repos\<RepoName>
 
 > **Start from production.** The copy should be your production code base in TFVC, so `main` in Git matches what's running in production. Work that's still moving through your environments doesn't come along here. You'll bring it over in Step 9.
 
-Copy each model folder as is, everything included. Build output and other files that don't belong in source control get filtered out by the `.gitignore` in the next step. Just copy your own models: Microsoft's standard packages, and ISV models you don't maintain, stay out of the repo.
+Copy each model folder as is, everything included. Build output and other files that don't belong in source control get filtered out by the `.gitignore` in the next step. Copy your own models and your ISV models. Microsoft's standard packages stay out of the repo.
+
+> **ISV models, for now.** Bringing ISV models into the repo keeps the migration simple and gets everything building from one place. There are more efficient ways to manage them, and I'll cover those in a later post in this series.
 
 ## Step 5: Add the .gitignore
 
