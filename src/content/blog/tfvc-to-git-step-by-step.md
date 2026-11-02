@@ -19,7 +19,21 @@ Here, I'll walk through the actual steps in Azure DevOps (ADO) and Visual Studio
 Before you copy anything, stop changes from landing in TFVC.
 
 1. **Announce a code freeze.** Agree on a cutoff with the team. After it, nobody checks in to TFVC.
-2. **Lock TFVC as read-only.** Remove check-in permissions in TFVC so the freeze is enforced, not just requested. The team can still read the code, which you'll need for the copy in Step 4 and for moving in-flight work in Step 9.
+2. **Lock TFVC as read-only.** Deny check-ins so the freeze is enforced, not just requested. The team can still read the code, which you'll need for the copy in Step 4 and for moving in-flight work in Step 9.
+
+To lock it in Azure DevOps:
+
+1. Go to **Repos > Files** and select your TFVC repo (the one starting with `$/`).
+2. Open the **⋮** menu next to the repo name and select **Security**.
+
+![The TFVC repo in Azure DevOps Repos > Files, with the more options menu open and Security highlighted](./images/tfvc-to-git/00a-tfvc-security.png)
+
+3. In **Permissions**, select each group your developers belong to, such as **Contributors**.
+4. Set **Check in** to **Deny**.
+
+![The TFVC permissions panel, with the Azure DevOps groups list highlighted and the Check in permission being changed to Deny](./images/tfvc-to-git/00b-tfvc-deny-checkin.png)
+
+Leave **Read** as it is, so everyone can still see the code. Deny wins over Allow in Azure DevOps, so a developer who belongs to several groups is still blocked.
 
 Without a freeze, changes keep landing in TFVC while you migrate, and they're easy to miss.
 
