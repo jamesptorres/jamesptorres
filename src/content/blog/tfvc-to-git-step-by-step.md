@@ -19,7 +19,7 @@ How you start depends on where you're working in Azure DevOps.
 A brand-new project comes with an empty repo. Before you can create branches or import code, it needs a first commit.
 
 1. In **Repos**, go to **Branches** (or **Files**). Since the repo is empty, you'll land on the "Add some code!" page.
-2. Under **Initialize main branch with a README or gitignore**, select **Initialize**.
+2. Under **Initialize main branch with a README or gitignore**, leave **Add a .gitignore** set to **None** and select **Initialize**. You'll add your own F&O `.gitignore` in a later step.
 
 ![The empty repo page in Azure DevOps, with Branches highlighted in the Repos menu and the Initialize button highlighted at the bottom](./images/tfvc-to-git/01-initialize-repo.png)
 
@@ -35,7 +35,7 @@ If your project already exists (for example, it's where your TFVC code lives tod
    - **Repository type:** Git
    - **Repository name:** a name for your F&O repo
    - **Add a README:** leave this checked, so the repo starts with a first commit
-   - **Add a .gitignore:** None
+   - **Add a .gitignore:** None. The built-in templates aren't built for D365 F&O, so you'll add your own F&O `.gitignore` in a later step.
 4. Select **Create**. The repo is initialized with a `main` branch.
 
 ![The Create a repository panel in Azure DevOps: the repository dropdown in the breadcrumb, repository type set to Git, a repository name field, Add a README checked, and Add a .gitignore set to None](./images/tfvc-to-git/02-new-repository.png)
