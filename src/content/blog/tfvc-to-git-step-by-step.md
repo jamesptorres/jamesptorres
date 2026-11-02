@@ -28,12 +28,13 @@ To lock it in Azure DevOps:
 
 ![The TFVC repo in Azure DevOps Repos > Files, with the more options menu open and Security highlighted](./images/tfvc-to-git/00a-tfvc-security.png)
 
-3. In **Permissions**, select each group your developers belong to, such as **Contributors**.
+3. In **Permissions**, select a group.
 4. Set **Check in** to **Deny**.
+5. Repeat for **every group in the list**, administrators included, so nobody can check in anymore.
 
 ![The TFVC permissions panel, with the Azure DevOps groups list highlighted and the Check in permission being changed to Deny](./images/tfvc-to-git/00b-tfvc-deny-checkin.png)
 
-Leave **Read** as it is, so everyone can still see the code. Deny wins over Allow in Azure DevOps, so a developer who belongs to several groups is still blocked.
+Leave **Read** as it is, so everyone can still see the code. Deny wins over Allow in Azure DevOps, so someone who belongs to several groups is still blocked.
 
 Without a freeze, changes keep landing in TFVC while you migrate, and they're easy to miss.
 
