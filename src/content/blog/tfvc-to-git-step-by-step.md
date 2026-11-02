@@ -8,7 +8,9 @@ draft: true
 
 This is the first hands-on guide in the *Do You Git It?* series. If you haven't read the overview, start with [A Git strategy for D365 F&O teams](/blog/do-you-git-it-d365-fo-git-strategy/). It covers the decisions to make before you touch anything: how much history to bring, how many repos, and how to branch.
 
-Here, I'll walk through the actual steps in Azure DevOps (ADO), with screenshots along the way.
+Here, I'll walk through the actual steps in Azure DevOps (ADO) and Visual Studio, with screenshots along the way.
+
+> **A note on dev environments:** these steps work whether you develop on the unified developer experience (UDE) or a cloud-hosted environment, but I'm focusing on UDE. That's where Microsoft is moving F&O development, away from cloud-hosted environments.
 
 ## Step 1: Create the Git repo
 
@@ -50,10 +52,12 @@ Next, get the new repo onto your development machine.
 2. On the start window, select **Clone a repository**.
 
 ![The Visual Studio start window, with Clone a repository as the first option under Get started](./images/tfvc-to-git/03-vs-clone.png)
-3. In **Clone a repository**, set the **Path** to the local folder where the repo should live. Select **...** to browse to it.
+
+3. In **Clone a repository**, set the **Path** to the local folder where the repo should live. Select **...** to browse to it. I use `C:\Repos\` (see the note below).
 4. Under **Browse a repository**, select **Azure DevOps** to find the repo you created in Step 1.
 
 ![The Visual Studio Clone a repository window, with the browse button next to Path highlighted and Azure DevOps highlighted under Browse a repository](./images/tfvc-to-git/04-clone-path-ado.png)
+
 5. In **Connect to a Project**, expand your ADO project and select the Git repo you created.
 6. Confirm the **Path**. Visual Studio adds the repo name to the folder you chose.
 7. Select **Clone**.
@@ -62,19 +66,92 @@ Next, get the new repo onto your development machine.
 
 The `$/` entry under the project is your existing TFVC repo. For this step, pick the Git repo, which has the Git icon.
 
-## Step 3: Copy your models into the Git repo
+> **Where to clone:** the most important rule is to keep the repo **out of any OneDrive-synced folder**. OneDrive can lock files and fight with Git over thousands of small metadata files. I use `C:\Repos\<RepoName>`, and another drive such as `D:\Repos\` works just as well. A short path also keeps you clear of Windows' 260-character path limit, which deep X++ metadata folders can hit.
+
+## Step 3: Set up the folders and copy your models
 
 With the Git repo cloned, bring your code over from TFVC.
 
-1. Open your **TFVC workspace folder**, the local folder your TFVC workspace maps to.
-2. Copy the metadata folders for **only the models you want under source control** into your newly cloned Git repo, inside its `Metadata` folder:
+1. In the root of your cloned Git repo, create two folders: **`Metadata`** and **`Projects`**.
+2. Open your **TFVC workspace folder**, the local folder your TFVC workspace maps to.
+3. Copy the folders for **only the models you want under source control** into the new `Metadata` folder.
+
+Your repo should now look like this:
 
 ```text
-<GitRepo>
-└── Metadata/
-    ├── YourModel/
-    └── YourOtherModel/
+C:\Repos\<RepoName>
+├── Metadata/
+│   ├── YourModel/
+│   └── YourOtherModel/
+├── Projects/
+└── README.md
 ```
 
-Copy your own models only. Microsoft's standard packages, and ISV models you don't maintain, stay out of the repo.
+Copy each model folder as is, everything included. Build output and other files that don't belong in source control get filtered out by the `.gitignore` in the next step. Just copy your own models: Microsoft's standard packages, and ISV models you don't maintain, stay out of the repo.
 
+## Step 4: Add the .gitignore
+
+Before you commit anything, add a `.gitignore` so build output, binaries, and user-specific files never make it into Git.
+
+1. In the **root** of the repo (the same level as `Metadata` and `Projects`), create a file named **`.gitignore`**.
+2. Paste in the contents below and save.
+
+> **Tip:** File Explorer can be fussy about names that start with a dot. In Notepad, choose **Save as**, set **Save as type** to **All files (\*.\*)**, and name the file `.gitignore`. Otherwise you may end up with `.gitignore.txt`.
+
+```gitignore
+# Binaries and build artifacts
+*.dll
+*.pdb
+*.exe
+bin/
+XppMetadata/
+Resources/
+
+# Log files
+*.log
+
+# User-specific or temporary files
+.vs/
+.suo
+*.user
+*.bak
+*.tmp
+temp/
+
+# Dynamics 365 specific files
+# Descriptor files for models (if not explicitly tracking them)
+# Complete directories for add-on packages (ISVs) if they are not part of your source control
+# Xref files (Cross-references)
+
+*.cache
+
+/**/BuildModelResult.xml
+/**/BuildProjectResult.err.xml
+/**/BuildProjectResult.xml
+/**/CompileLabels.xml
+/**/BuildModelResult.err.xml
+# Addition custom model .xref files - /**/<ModelName>.xref
+
+# Custom model .dll references
+# !<CustomModel>/bin/ - Include bin folder
+# <CustomModel>/bin/* - Exclude all files in bin folder
+# !<CustomModel>/bin/<dllName>.*.dll - Include specific .dlls
+
+# Dynamics 365 specific files
+*.rdl
+*.BCL
+ABP.ElementNames.xml
+
+# Ensure build results are caught regardless of path depth
+**/BuildModelResult.xml
+**/BuildProjectResult.err.xml
+**/BuildProjectResult.xml
+**/CompileLabels.xml
+**/BuildModelResult.err.xml
+```
+
+A few notes on this file:
+
+- **Generic by design.** It covers the common F&O build output and user files. The commented-out lines are placeholders for model-specific rules.
+- **Model `.xref` files:** to ignore a custom model's cross-reference file, add a line like `/**/<ModelName>.xref`.
+- **DLLs a model needs:** `*.dll` ignores every DLL. If a model references a .NET library that has to be checked in, re-include just that file with the three commented lines under *Custom model .dll references*: un-ignore the model's `bin` folder, ignore everything in it, then un-ignore only the DLLs you need. The order matters.
