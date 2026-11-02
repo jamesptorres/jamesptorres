@@ -66,7 +66,7 @@ If your project already exists (for example, it's where your TFVC code lives tod
    - **Add a .gitignore:** None. The built-in templates aren't built for D365 F&O, so you'll add your own F&O `.gitignore` in a later step.
 4. Select **Create**. The repo is initialized with a `main` branch.
 
-![The Create a repository panel in Azure DevOps: the repository dropdown in the breadcrumb, repository type set to Git, a repository name field, Add a README checked, and Add a .gitignore set to None](./images/tfvc-to-git/02-new-repository.png)
+![The Create a repository panel in Azure DevOps: the repository dropdown in the breadcrumb, repository type set to Git, a repository name field, Add a README checked, and Add a .gitignore set to None](./images/tfvc-to-git/02-new-repository-v2.png)
 
 Either way, you now have a Git repo with a `main` branch, ready for the next steps.
 
