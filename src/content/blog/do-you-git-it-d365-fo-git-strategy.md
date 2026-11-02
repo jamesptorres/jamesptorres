@@ -144,9 +144,9 @@ ABP.ElementNames.xml
 Ignoring `*.dll` is the right default, but some models need specific DLLs checked in, like a .NET library your X++ references. Re-include just those with a negated pattern:
 
 ```gitignore
-!YourModel/bin/
-YourModel/bin/*
-!YourModel/bin/YourCompany.*.dll
+!Metadata/YourModel/bin/
+Metadata/YourModel/bin/*
+!Metadata/YourModel/bin/YourCompany.*.dll
 ```
 
 The order matters: un-ignore the folder, ignore everything in it, then un-ignore only the files you need.
