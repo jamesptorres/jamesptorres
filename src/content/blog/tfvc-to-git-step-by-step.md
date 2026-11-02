@@ -41,3 +41,12 @@ If your project already exists (for example, it's where your TFVC code lives tod
 ![The Create a repository panel in Azure DevOps: the repository dropdown in the breadcrumb, repository type set to Git, a repository name field, Add a README checked, and Add a .gitignore set to None](./images/tfvc-to-git/02-new-repository.png)
 
 Either way, you now have a Git repo with a `main` branch, ready for the next steps.
+
+## Step 2: Clone the repo in Visual Studio
+
+Next, get the new repo onto your development machine.
+
+1. Open **Visual Studio**.
+2. On the start window, select **Clone a repository**.
+
+![The Visual Studio start window, with Clone a repository as the first option under Get started](./images/tfvc-to-git/03-vs-clone.png)
