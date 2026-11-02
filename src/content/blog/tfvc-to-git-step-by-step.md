@@ -62,7 +62,7 @@ Next, get the new repo onto your development machine.
 6. Confirm the **Path**. Visual Studio adds the repo name to the folder you chose.
 7. Select **Clone**.
 
-![The Visual Studio Connect to a Project window, with the Git repo selected under the project, the local clone path, and the Clone button highlighted](./images/tfvc-to-git/05-connect-clone.png)
+![The Visual Studio Connect to a Project window, with the Git repo selected under the project, the local clone path, and the Clone button highlighted](./images/tfvc-to-git/05-connect-clone-repos.png)
 
 The `$/` entry under the project is your existing TFVC repo. For this step, pick the Git repo, which has the Git icon.
 
@@ -73,7 +73,7 @@ The `$/` entry under the project is your existing TFVC repo. For this step, pick
 With the Git repo cloned, bring your code over from TFVC.
 
 1. In the root of your cloned Git repo, create two folders: **`Metadata`** and **`Projects`**.
-2. Open your **TFVC workspace folder**, the local folder your TFVC workspace maps to.
+2. Open your **TFVC workspace folder** for the branch that matches **production**, the local folder that workspace maps to.
 3. Copy the folders for **only the models you want under source control** into the new `Metadata` folder.
 
 Your repo should now look like this:
@@ -86,6 +86,8 @@ C:\Repos\<RepoName>
 ├── Projects/
 └── README.md
 ```
+
+> **Start from production.** The copy should be your production code base in TFVC, so `main` in Git matches what's running in production. Work that's still moving through your environments doesn't come along here. You'll bring it over in Step 8.
 
 Copy each model folder as is, everything included. Build output and other files that don't belong in source control get filtered out by the `.gitignore` in the next step. Just copy your own models: Microsoft's standard packages, and ISV models you don't maintain, stay out of the repo.
 
@@ -161,5 +163,38 @@ The last step is your first real commit.
 
 ![The Visual Studio Git Changes window on the main branch, with the list of changes under the Metadata folder, the commit message "TFVC to Git migration", and the dropdown next to Commit All highlighted](./images/tfvc-to-git/06-commit-push.png)
 
-Your F&O code is now in Git. Check the repo in Azure DevOps to confirm the `Metadata` folder and your models are there.
+Your production code is now in Git on `main`. Check the repo in Azure DevOps to confirm the `Metadata` folder and your models are there.
+
+## Step 6: Build and deploy to your UDE environment
+
+Before anyone starts working from the new repo, prove that it has everything.
+
+1. In Visual Studio, connect to your **UDE environment**.
+2. Point the metadata configuration at the repo's `Metadata` folder.
+3. **Build** your models, then **deploy** them to the environment.
+
+If the build fails or something is missing in the environment, a file didn't make it over, or the `.gitignore` is filtering out something it shouldn't. Fix it and push again before moving on.
+
+## Step 7: Create the dev branch
+
+With `main` validated, create the branch your team will work from.
+
+1. In Azure DevOps, go to **Repos > Branches** and select **New branch**.
+2. Name it **`dev`** and base it on **`main`**.
+
+To start, `dev` is an exact copy of `main`. From here on, day-to-day work flows into `dev`, and `main` only changes when you promote to production.
+
+## Step 8: Bring over in-flight development
+
+Step 3 copied only production. Anything further down your pipeline in TFVC, such as changes in development, test, or UAT that haven't reached production, still needs to come across.
+
+1. For each in-flight change, create a **feature branch off `dev`**.
+2. Apply the change in that feature branch and commit it.
+3. Merge it into `dev` through a **pull request**.
+
+Moving changes one at a time is more work than a bulk copy, but it means every change lands in Git on its own, reviewed and traceable, instead of arriving as one big untested lump.
+
+## What's next
+
+Your code is in Git, validated, and your team has a `dev` branch to work from. In the next post, I'll cover configuring the repo itself: branch security and policies so nobody commits directly to `dev` or `main`, plus pipelines and releases.
 
