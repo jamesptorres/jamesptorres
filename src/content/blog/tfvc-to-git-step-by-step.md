@@ -175,14 +175,15 @@ Before anyone starts working from the new repo, prove that it has everything.
 
 If the build fails or something is missing in the environment, a file didn't make it over, or the `.gitignore` is filtering out something it shouldn't. Fix it and push again before moving on.
 
-## Step 7: Create the dev branch
+## Step 7: Create your environment branches
 
-With `main` validated, create the branch your team will work from.
+With `main` validated, create the rest of your branches from it.
 
 1. In Azure DevOps, go to **Repos > Branches** and select **New branch**.
 2. Name it **`dev`** and base it on **`main`**.
+3. Repeat for any other environment branches your process needs, such as a test or UAT gate, each based on `main`.
 
-To start, `dev` is an exact copy of `main`. From here on, day-to-day work flows into `dev`, and `main` only changes when you promote to production.
+To start, every branch is an exact copy of `main`, which is your production code. From here on, day-to-day work flows into `dev`, and `main` only changes when you promote to production.
 
 ## Step 8: Bring over in-flight development
 
@@ -191,10 +192,11 @@ Step 3 copied only production. Anything further down your pipeline in TFVC, such
 1. For each in-flight change, create a **feature branch off `dev`**.
 2. Apply the change in that feature branch and commit it.
 3. Merge it into `dev` through a **pull request**.
+4. From there, promote it the normal way, through pull requests from one branch to the next: feature → `dev` → … → `main` (production), once it's ready to deploy.
 
-Moving changes one at a time is more work than a bulk copy, but it means every change lands in Git on its own, reviewed and traceable, instead of arriving as one big untested lump.
+Moving changes one at a time is more work than a bulk copy, but every change lands in Git on its own, reviewed and traceable, and moves through the same path as any new work.
 
 ## What's next
 
-Your code is in Git, validated, and your team has a `dev` branch to work from. In the next post, I'll cover configuring the repo itself: branch security and policies so nobody commits directly to `dev` or `main`, plus pipelines and releases.
+Your code is in Git, validated, your branches are in place, and in-flight work is moving through them. In the next post, I'll cover configuring the repo itself: branch security and policies so nobody commits directly to `dev` or `main`, plus pipelines and releases.
 
