@@ -183,7 +183,7 @@ A few notes on this file:
 
 ## Step 6: Build and deploy to validate
 
-Before you commit anything, prove the repo has everything. No screenshots for this one: if you develop in F&O today, you already know how to point Visual Studio at your custom code.
+Before you commit anything, prove the repo has everything. Build the solution in your UDE or cloud-hosted development environment.
 
 1. Point your development environment at the repo:
    - **UDE:** set the custom metadata folder in your metadata configuration to the repo's `Metadata` folder.
