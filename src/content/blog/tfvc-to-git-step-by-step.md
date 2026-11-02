@@ -54,3 +54,10 @@ Next, get the new repo onto your development machine.
 4. Under **Browse a repository**, select **Azure DevOps** to find the repo you created in Step 1.
 
 ![The Visual Studio Clone a repository window, with the browse button next to Path highlighted and Azure DevOps highlighted under Browse a repository](./images/tfvc-to-git/04-clone-path-ado.png)
+5. In **Connect to a Project**, expand your ADO project and select the Git repo you created.
+6. Confirm the **Path**. Visual Studio adds the repo name to the folder you chose.
+7. Select **Clone**.
+
+![The Visual Studio Connect to a Project window, with the Git repo selected under the project, the local clone path, and the Clone button highlighted](./images/tfvc-to-git/05-connect-clone.png)
+
+The `$/` entry under the project is your existing TFVC repo. For this step, pick the Git repo, which has the Git icon.
