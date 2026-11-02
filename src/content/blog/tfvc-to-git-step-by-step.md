@@ -181,28 +181,28 @@ A few notes on this file:
 - **Model `.xref` files:** to ignore a custom model's cross-reference file, add a line like `/**/<ModelName>.xref`.
 - **DLLs a model needs:** `*.dll` ignores every DLL. If a model references a .NET library that has to be checked in, re-include just that file with the three commented lines under *Custom model .dll references*: un-ignore the model's `bin` folder, ignore everything in it, then un-ignore only the DLLs you need. The order matters.
 
-## Step 6: Review, commit, and push
+## Step 6: Build and deploy to validate
 
-The last step is your first real commit.
-
-1. In Visual Studio, open **Git Changes** and **review the files listed under Changes**. Make sure nothing extra is being added, like build output or DLLs. If something slipped through, your `.gitignore` isn't working as expected. Fix it before you commit.
-2. Enter a commit message, such as **TFVC to Git migration**.
-3. Select the dropdown next to **Commit All**, then choose **Commit All and Push**.
-
-![The Visual Studio Git Changes window on the main branch, with the list of changes under the Metadata folder, the commit message "TFVC to Git migration", and the dropdown next to Commit All highlighted](./images/tfvc-to-git/06-commit-push.png)
-
-Your production code is now in Git on `main`. Check the repo in Azure DevOps to confirm the `Metadata` folder and your models are there.
-
-## Step 7: Build and deploy to validate
-
-Before anyone starts working from the new repo, prove that it has everything. No screenshots for this one: if you develop in F&O today, you already know how to point Visual Studio at your custom code.
+Before you commit anything, prove the repo has everything. No screenshots for this one: if you develop in F&O today, you already know how to point Visual Studio at your custom code.
 
 1. Point your development environment at the repo:
    - **UDE:** set the custom metadata folder in your metadata configuration to the repo's `Metadata` folder.
    - **Cloud-hosted:** link each model folder in the repo into `PackagesLocalDirectory`, the same way you mapped your TFVC workspace.
 2. **Build** your models, then **deploy** them to the environment (on cloud-hosted, build and run a database sync).
 
-If the build fails or something is missing in the environment, a file didn't make it over, or the `.gitignore` is filtering out something it shouldn't. Fix it and push again before moving on.
+If the build fails or something is missing in the environment, a file didn't make it over, or the `.gitignore` is filtering out something it shouldn't. Fix it and build again before you commit.
+
+## Step 7: Review, commit, and push
+
+With a clean build, make your first real commit.
+
+1. In Visual Studio, open **Git Changes** and **review the files listed under Changes**. Make sure nothing extra is being added, like the build output from Step 6 or DLLs. If something slipped through, your `.gitignore` isn't working as expected. Fix it before you commit.
+2. Enter a commit message, such as **TFVC to Git migration**.
+3. Select the dropdown next to **Commit All**, then choose **Commit All and Push**.
+
+![The Visual Studio Git Changes window on the main branch, with the list of changes under the Metadata folder, the commit message "TFVC to Git migration", and the dropdown next to Commit All highlighted](./images/tfvc-to-git/06-commit-push.png)
+
+Your production code is now in Git on `main`. Check the repo in Azure DevOps to confirm the `Metadata` folder and your models are there.
 
 ## Step 8: Create your environment branches
 
