@@ -191,13 +191,14 @@ The last step is your first real commit.
 
 Your production code is now in Git on `main`. Check the repo in Azure DevOps to confirm the `Metadata` folder and your models are there.
 
-## Step 7: Build and deploy to your UDE environment
+## Step 7: Build and deploy to validate
 
-Before anyone starts working from the new repo, prove that it has everything.
+Before anyone starts working from the new repo, prove that it has everything. No screenshots for this one: if you develop in F&O today, you already know how to point Visual Studio at your custom code.
 
-1. In Visual Studio, connect to your **UDE environment**.
-2. Point the metadata configuration at the repo's `Metadata` folder.
-3. **Build** your models, then **deploy** them to the environment.
+1. Point your development environment at the repo:
+   - **UDE:** set the custom metadata folder in your metadata configuration to the repo's `Metadata` folder.
+   - **Cloud-hosted:** link each model folder in the repo into `PackagesLocalDirectory`, the same way you mapped your TFVC workspace.
+2. **Build** your models, then **deploy** them to the environment (on cloud-hosted, build and run a database sync).
 
 If the build fails or something is missing in the environment, a file didn't make it over, or the `.gitignore` is filtering out something it shouldn't. Fix it and push again before moving on.
 
