@@ -63,6 +63,19 @@ const { title, description, pubDate, updatedDate, tags, heroImage, heroAlt, hero
   )}
 
   <script>
+    // Click an image in a post to open it full size (handy for screenshots)
+    document.querySelectorAll('.prose img').forEach((img) => {
+      if (img.closest('a')) return;
+      const a = document.createElement('a');
+      a.href = img.currentSrc || img.src;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.className = 'img-zoom';
+      a.title = 'Open full size';
+      img.replaceWith(a);
+      a.appendChild(img);
+    });
+
     document.querySelectorAll('.prose pre').forEach((pre) => {
       const btn = document.createElement('button');
       btn.className = 'copy-btn';

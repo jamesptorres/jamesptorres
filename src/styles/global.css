@@ -194,6 +194,8 @@ h1, h2, h3 { line-height: 1.2; letter-spacing: -0.02em; font-weight: 700; }
 .prose blockquote { margin-left: 0; padding: 2px 0 2px 18px; border-left: 3px solid var(--accent); color: var(--fg-muted); font-style: italic; }
 .prose hr { border: 0; border-top: 1px solid var(--border); margin: 2.5em 0; }
 .prose img { border-radius: 8px; }
+.prose .img-zoom { display: block; cursor: zoom-in; }
+.prose .img-zoom img { border: 1px solid var(--border); }
 .prose figcaption { font-family: var(--font-sans); font-size: 14px; color: var(--fg-subtle); text-align: center; margin-top: 8px; }
 .prose table { border-collapse: collapse; width: 100%; font-family: var(--font-sans); font-size: 15px; display: block; overflow-x: auto; }
 .prose th { text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); padding: 8px 10px; }
