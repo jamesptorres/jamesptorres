@@ -50,3 +50,7 @@ Next, get the new repo onto your development machine.
 2. On the start window, select **Clone a repository**.
 
 ![The Visual Studio start window, with Clone a repository as the first option under Get started](./images/tfvc-to-git/03-vs-clone.png)
+3. In **Clone a repository**, set the **Path** to the local folder where the repo should live. Select **...** to browse to it.
+4. Under **Browse a repository**, select **Azure DevOps** to find the repo you created in Step 1.
+
+![The Visual Studio Clone a repository window, with the browse button next to Path highlighted and Azure DevOps highlighted under Browse a repository](./images/tfvc-to-git/04-clone-path-ado.png)
