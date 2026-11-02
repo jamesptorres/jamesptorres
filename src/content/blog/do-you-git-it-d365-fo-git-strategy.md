@@ -2,7 +2,7 @@
 title: "Do You Git It? A Git strategy for D365 F&O teams"
 description: "Starting a new D365 F&O project or moving off TFVC? The decisions that matter most: history, repos, branches, and pipelines. The roadmap for a series of hands-on guides."
 pubDate: 2026-10-26
-updatedDate: 2026-10-29
+updatedDate: 2026-11-02
 tags: ["D365 F&O", "Technical"]
 heroImage: ./images/do-you-git-it/git-strategy-cover.png
 heroAlt: "Do You Git It? A Git strategy for Dynamics 365 F&O teams, with a diagram of commits moving between test and main branches"
@@ -249,11 +249,10 @@ Your repo holds your X++ only. ISV binaries come from an artifact feed, and the 
 
 This post is the map. Next come the hands-on guides, each with the scenario, the steps, and the gotchas:
 
-1. **Migrating from TFVC to Git, step by step:** cleanup, the import, and locking TFVC.
-2. **Repo structure and developer setup:** the metadata folder, Visual Studio, and `.gitignore`.
-3. **Branching in practice:** branch policies, pull requests, hotfixes, and selective promotion.
-4. **YAML pipelines for D365 F&O:** from a classic build definition to a code-based pipeline.
-5. **Handling ISV binaries:** artifact feeds versus blob storage.
+1. **[Part 1: Migrating D365 F&O from TFVC to Git](/blog/tfvc-to-git-step-by-step/):** locking TFVC, setting up the repo and `.gitignore`, building to validate, creating your branches, and moving in-flight work.
+2. **Configuring the repo:** branch security and policies, pull requests, YAML pipelines, and releases.
+3. **Branching in practice:** hotfixes and selective promotion.
+4. **Handling ISV binaries:** artifact feeds versus blob storage.
 
 I'll link each one here as it's published.
 

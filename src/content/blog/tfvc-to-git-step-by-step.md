@@ -1,11 +1,11 @@
 ---
 title: "Do You Git It? Part 1: Migrating D365 F&O from TFVC to Git"
 description: "The hands-on walkthrough: setting up the Git repo in Azure DevOps and moving your D365 F&O code over from TFVC, one step at a time."
-pubDate: 2026-11-01
+pubDate: 2026-11-02
 tags: ["D365 F&O", "Technical"]
 heroImage: ./images/tfvc-to-git/part1-cover.png
 heroAlt: "Do You Git It? Part 1: Migrating from TFVC to Git, step by step, with a diagram of commits moving between test and main branches"
-draft: true
+draft: false
 ---
 
 This is **Part 1** of the hands-on guides in the *Do You Git It?* series. If you haven't read the overview, start with [A Git strategy for D365 F&O teams](/blog/do-you-git-it-d365-fo-git-strategy/). It covers the decisions to make before you touch anything: how much history to bring, how many repos, and how to branch.
