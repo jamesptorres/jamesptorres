@@ -15,15 +15,15 @@ At that point, nobody knows whether it's a quick win, a six-month project, or no
 **Before anyone opens a tool, I ask five questions:**
 
 1. **What starts the process?**\
-   An email, a status change, or a person deciding it's time. The trigger shapes everything after it.
+   The trigger decides where the solution plugs in, and whether it runs without anyone remembering to start it.
 2. **Which part takes the most manual effort today?**\
-   Reading, comparing, re-keying, and chasing. That's where the payoff is.
+   That's where the time savings, and the business case, come from.
 3. **Where does someone make a judgment call?**\
-   That's anywhere two experienced people might reasonably decide differently. None, with tidy inputs, usually means no AI. One usually means a small ask. Several, or one that spans systems or acts on someone's behalf, means a large one.
+   Judgment is the part that actually needs AI. None, with tidy inputs, usually means no AI. One usually means a small ask. Several, or one that spans systems or acts on someone's behalf, means a large one.
 4. **Where does the result have to land, and who's allowed to put it there?**\
-   The system of record, and who can change it, decide how much control the design needs.
+   Writing to a system of record is where the risk lives, and it decides how much approval and security the design needs.
 5. **How will we know it worked?**\
-   Pick a measure, like cycle time, touches, or errors, and capture it before you start.
+   Without a baseline, you can't prove the value, and the next AI request gets harder to fund.
 
 ## Everyone wants AI
 
