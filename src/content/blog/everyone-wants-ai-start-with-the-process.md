@@ -69,6 +69,8 @@ Teams that build first usually meet these as surprises: a sign-in prompt nobody 
 
 So the next time someone says "we want an agent for ___," start with the process. The blank often turns out smaller than anyone expected, and sometimes it isn't AI at all.
 
+Better still, don't wait for requests to arrive one at a time. Inventory your highest-volume, most time-consuming processes, run the whole batch through the five questions, and prioritize from there. Start with the small asks, and grow into the larger, architecture-heavy ones as the team builds experience.
+
 And the small ones add up. Each one that goes live gives the team something real to build on, and the next conversation starts somewhere better than "we want an agent for ___."
 
 Thanks for reading,\
