@@ -14,13 +14,21 @@ They fell into two groups. Teams that hadn't started were asking where to begin.
 
 Different questions, same root cause. Nobody had a model problem. They had a process problem, and most of them found it after the build instead of before it.
 
+**Before anyone opens a tool, I ask five questions:**
+
+1. **What starts the process?**
+2. **Where does the time actually go?**
+3. **Where does someone make a judgment call?** None means it's not an AI problem. One means it's a small ask. Many means it's a large one.
+4. **Where does the result have to land, and who's allowed to put it there?**
+5. **How will we know it worked?**
+
 ## Everyone wants AI
 
 Most AI work starts with a sentence like "we want an agent for collections." That's a fine starting point and a poor requirement. Until you dig into the process, you don't know whether you're holding a quick win, a real project, or something that doesn't need AI at all.
 
 Getting that wrong is expensive in both directions. Either you spend months building an agent to do a job a rule could do, or you promise a quick win and walk straight into a security review.
 
-So before anyone opens a tool, I walk through the process with the people who do the work: what starts it, where the time actually goes, where someone makes a judgment call, where the result has to land, and how we'll know it worked. Those answers put almost every request into one of three buckets.
+That's why those five questions come first, asked with the people who actually do the work. The answers put almost every request into one of three buckets.
 
 ## No AI at all
 
