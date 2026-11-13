@@ -15,7 +15,7 @@ At that point, nobody knows whether it's a quick win, a six-month project, or no
 **Before anyone opens a tool, I ask five questions:**
 
 1. **What starts the process?**
-2. **Where does the time actually go?**
+2. **Which part takes the most manual effort today?**
 3. **Where does someone make a judgment call?** None means it's not an AI problem. One means it's a small ask. Many means it's a large one.
 4. **Where does the result have to land, and who's allowed to put it there?**
 5. **How will we know it worked?**
