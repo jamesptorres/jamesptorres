@@ -51,17 +51,19 @@ Digging in also shows what not to automate. Bank-detail change requests are a fa
 
 ## A large ask
 
-Some requests really are large. The agent has to reason across several systems, handle inputs that vary every time, or act on someone's behalf. This is also where teams that built first tend to hit walls: a sign-in prompt nobody expected, calls timing out on large data, approvals that have to happen before anything is written. None of those are AI problems.
+Now make the same inbox request bigger: the agent should resolve invoice discrepancies on its own. It reads the vendor's email, checks the purchase order and the receipt in the ERP, decides whether the vendor is right, adjusts the invoice, and replies.
 
-The sign-in prompt is a decision about whose identity the agent acts as. Acting as each user means people sign in or consent, often just once if single sign-on is set up properly, and every action carries their own permissions and name. A shared service account removes the prompt, but everyone gets that account's access, and the audit trail shows the account instead of the person.
+That's several judgment calls, across several systems, with the agent acting on someone's behalf. It's worth doing, but the hard questions stop being about AI. They become four architecture decisions:
 
-The timeouts are platform limits, and the fix is architectural: filter and shape the data, page through it, or move the heavy work out of the conversation. A smarter model won't help.
+**Whose identity does the agent act as?** If it acts as each user, every action carries that person's permissions and name, and with single sign-on set up properly they often only sign in or consent once. A shared service account removes the prompt, but everyone gets that account's access, and the audit trail shows the account instead of the person. Decide this with security at the start.
 
-For writes that matter, my default is simple: the agent proposes, a person approves, and a workflow does the actual write. Low-risk, reversible actions can skip the person.
+**What can it write, and who approves?** For writes that matter, my default is simple: the agent proposes, a person approves, and a workflow does the actual write. Low-risk, reversible actions can skip the person.
 
-And someone has to own the agent after launch. The quietest failure I've seen was an agent that simply stopped working because a credential behind it expired, and nobody was watching.
+**What are the platform's limits?** Every platform caps how much data a call can return and how long it can run. The fix is architectural: filter and shape the data, page through it, or move the heavy work out of the conversation. A smarter model won't help.
 
-Large asks are worth doing. They're architecture projects with an AI step in them, and they should be scoped like one.
+**Who owns it after launch?** An agent is software, and it needs an owner, testing, and monitoring. The quietest failure I've seen was an agent that simply stopped working because a credential behind it expired, and nobody was watching.
+
+Teams that build first usually meet these as surprises: a sign-in prompt nobody expected, calls timing out on large data, approvals bolted on at the end. Asked up front, they're just design decisions. That's the difference between a large ask and a stalled one: it gets scoped as an architecture project with AI in it.
 
 ## Back to the blank
 
