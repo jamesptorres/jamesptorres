@@ -69,7 +69,7 @@ Teams that build first usually meet these as surprises: a sign-in prompt nobody 
 
 So the next time someone says "we want an agent for ___," start with the process. The blank often turns out smaller than anyone expected, and sometimes it isn't AI at all.
 
-None of that is a case against AI. It's how you get it working sooner. A well-scoped small ask can often be live in weeks, not months, and every one teaches your team what the next, bigger agent will need. Start with the process, and the AI has somewhere useful to go.
+And the small ones add up. Each one that goes live gives the team something real to build on, and the next conversation starts somewhere better than "we want an agent for ___."
 
 Thanks for reading,\
 James
