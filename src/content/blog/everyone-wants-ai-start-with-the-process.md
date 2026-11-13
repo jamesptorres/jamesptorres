@@ -1,6 +1,6 @@
 ---
 title: "Everyone wants AI. Start with the process."
-description: "Every AI request sounds the same at first. Once you dig into the process, it turns out to be one of three things: no AI at all, a small ask, or a large one."
+description: "Teams building AI agents rarely ask about the model. Their real questions point to the same root cause, and to a simpler way to start: no AI, a small ask, or a large one."
 pubDate: 2026-11-13
 tags: ["AI", "Technical"]
 heroImage: ./images/everyone-wants-ai-start-with-the-process/cover.png
@@ -8,75 +8,53 @@ heroAlt: "Everyone wants AI. Start with the process. A process flow of ordinary 
 draft: true
 ---
 
-The request usually arrives in one sentence: "We want an agent for collections."
+I spend a lot of time answering questions from teams building AI agents. Recently I worked through a batch of them, sent in by organizations at every stage, and one thing stood out: almost none were about the model.
 
-Sometimes it's invoices, or approvals, or the shared inbox nobody likes checking. The sentence is always the same shape. Everyone wants AI, and at that point, nobody has looked at the process yet.
+They fell into two groups. Teams that hadn't started were asking where to begin. Teams that had started had hit a wall: a sign-in prompt users couldn't get rid of, calls timing out on large data, approvals that had to happen before anything was written, and how to keep agents under control once more people were building them.
 
-I don't think that's a problem. It's a good instinct. But "we want an agent" isn't a requirement. It's a starting point for a conversation, and that conversation almost always ends somewhere different from where it started.
+Different questions, same root cause. Nobody had a model problem. They had a process problem, and most of them found it after the build instead of before it.
 
-## Dig into the process first
+## Everyone wants AI
 
-Before anyone opens a tool, I want to understand the work itself. A few questions do most of the heavy lifting:
+Most AI work starts with a sentence like "we want an agent for collections." That's a fine starting point and a poor requirement. Until you dig into the process, you don't know whether you're holding a quick win, a real project, or something that doesn't need AI at all.
 
-- **What starts it?** An email, a status change in the ERP, a person deciding it's time?
-- **Where does the time actually go?** Not the steps on the diagram, but the reading, comparing, re-keying, and chasing in between.
-- **Where does someone make a judgment call?** The places where two experienced people might reasonably decide differently.
-- **What's the system of record?** Where does the result have to end up, and who's allowed to put it there?
-- **How will we know it worked?** Cycle time, touches, errors. Something we can measure before and after.
+Getting that wrong is expensive in both directions. Either you spend months building an agent to do a job a rule could do, or you promise a quick win and walk straight into a security review.
 
-Those answers sort almost every request into one of three buckets.
+So before anyone opens a tool, I walk through the process with the people who do the work: what starts it, where the time actually goes, where someone makes a judgment call, where the result has to land, and how we'll know it worked. Those answers put almost every request into one of three buckets.
 
-## Sometimes the answer is no AI at all
+## No AI at all
 
-A surprising number of AI requests turn out to be rules.
+Routing approvals over a certain amount is a workflow condition. Flagging late orders is a report and an alert. Filling in fields on a new vendor is often configuration.
 
-"An agent that sends approvals over a certain amount to the controller" is a workflow with a condition in it. "An agent that tells us which orders are running late" is a report and an alert. "An agent that fills in these fields when a vendor is created" is often just configuration.
+If every decision in the process can be written as an if-then rule, a workflow will do it faster, cheaper, and the same way every time. Saying so early isn't a letdown. It gets the problem solved this month, and it earns trust for the request that does need AI.
 
-None of those need a model making decisions. A workflow does them faster, cheaper, and the same way every time, which is exactly what you want when the rule is clear.
+## A small ask
 
-Saying that out loud early is part of the job. It's not the exciting answer, but it's the one that gets the problem solved this month, and it builds the trust you need for the next request, the one that does need AI.
+This is the most common answer: an ordinary workflow with one judgment step in it.
 
-## Sometimes it's a small ask
+Take collections emails drafted from about 30 templates. Gathering the invoice details, filling in the template, and creating the draft are all mechanical. The one real judgment is which template fits this customer's situation. That's the AI step, and a person still reviews and sends every email.
 
-The most common answer, in my experience, is a small one: an ordinary workflow with one judgment step in the middle.
+Could a workflow have done most of this? Mostly, yes, and that's the point. A small ask is easy to test, easy to explain, and low-risk. Digging in also shows what not to automate. Here, the templates are maintained by hand, because adding one takes seconds.
 
-Take that collections request. Picture a team that drafts customer emails from about 30 templates. When we walk through the process, almost all of it is mechanical. A collector selects invoices in the ERP. The customer and invoice details get gathered and cleaned up. The right template gets filled in, and a draft lands in the collector's mailbox for them to review and send.
+## A large ask
 
-There's exactly one step where judgment comes in: deciding which of the 30 templates fits this customer's situation. That's the AI step. Everything around it is a workflow.
+Some requests really are large. The agent has to reason across several systems, handle inputs that vary every time, or act on someone's behalf. This is where the walls from those questions live, and none of them are AI problems.
 
-Could a workflow have done most of this on its own? Mostly, yes. And that's the point. The AI is doing the one thing rules can't, and it's small enough to test, easy to explain, and low-risk if it gets something wrong, because a person reads every email before it goes out.
+The sign-in prompt is a decision about whose identity the agent acts as. Acting as each user means a prompt, but every action carries that person's own permissions and name. A shared account removes the prompt, and gives everyone that account's access.
 
-Digging in also tells you what *not* to automate. In this case, the templates themselves are maintained by hand. Adding a new one takes seconds, so building automation around it would add complexity for no real gain. Right-sizing goes both ways.
+The timeouts are platform limits, and the fix is shaping the data before the agent sees it, not a smarter model.
 
-## Sometimes it's a large ask
+The approvals come down to one rule: the agent proposes, a person approves, and a workflow does the actual write.
 
-Then there are the requests that really are large: the agent has to reason across several systems, handle messy inputs that vary every time, or take actions on someone's behalf.
+And someone has to own the agent after launch. The quietest failure I've seen was an agent that simply stopped working because a credential behind it expired, and nobody was watching.
 
-These are worth doing. But this is where the questions stop being about AI and start being about architecture.
+Large asks are worth doing. They're architecture projects with an AI step in them, and they should be scoped like one.
 
-**Whose identity does the agent act as?** One of the most common questions I hear is "can we get rid of the sign-in prompt?" It sounds like a user-experience request. It's actually a decision about permissions. If the agent acts as each user, people see a prompt, but every action carries their own access and their own name. If it acts as a shared service account, the prompt disappears, but everyone inherits that account's permissions, and the audit trail shows the account instead of the person. Either can be right. It just has to be a decision, not a workaround.
+## The model is the easy part
 
-**Who approves before anything gets written?** My rule is that the agent proposes, a person approves, and a workflow does the actual write to the system of record. The agent never commits on its own.
+The teams asking where to start were in a better position than they thought. They hadn't built anything yet, so they could still start with the process.
 
-**What are the platform's limits?** Agent platforms have hard caps on how much data a single call can return and how long it can run. Large asks hit them. The fix is design, like shaping and filtering the data before the agent ever sees it, not hoping a smarter model copes.
-
-**Who runs it after it ships?** Large asks are software, and software needs an owner, environments, testing, and monitoring. The least glamorous failure I've seen was an agent that simply stopped working one day because a credential behind it had quietly expired. Nothing about the AI was wrong. Nobody was watching the plumbing.
-
-None of that is a reason not to build. It's a reason to know which kind of request you're holding before you promise a timeline.
-
-## How to tell which one you have
-
-After a while, the signals are pretty consistent. If every decision in the process can be written as an if-then rule, it's not an AI problem. If there's one step where a person reads something messy and makes a call, and everything else is mechanical, it's a small ask. If the judgment is spread across the whole process, the agent needs to act across several systems, or it would be acting with real authority, it's a large ask, and it deserves the architecture conversation up front.
-
-Most requests land in the first two buckets. That's good news. It means most teams can get real value from AI sooner than they think, by putting it in the one place it's actually needed.
-
-## Back to the request
-
-"We want an agent for collections" turned into a workflow with one AI step that picks a template, and a person who still clicks send.
-
-That's not a smaller version of what was asked for. It's the version that ships, gets used, and earns the right to try something bigger next.
-
-So when the next "we want AI" request lands on your desk, start with the process. The AI part is usually smaller than anyone expects, and sometimes it isn't there at all.
+Find out which bucket you're in first. The AI part usually turns out smaller, and more useful, than anyone expected.
 
 Thanks for reading,\
 James
