@@ -41,9 +41,13 @@ If every decision in the process can be written as an if-then rule, and the inpu
 
 In my experience, this is the most common answer: an ordinary workflow with one judgment step in it.
 
-Take collections emails drafted from about 30 templates. Gathering the invoice details, filling in the template, and creating the draft are all mechanical. The one real judgment is which template fits this customer's situation, and those situations don't map cleanly to fields. A decision table for 30 templates gets brittle every time one is added or renamed. That's the AI step, and a person still reviews and sends every email.
+Take a shared accounts payable inbox. Vendors send invoices, statements, payment questions, and the occasional "please update our bank details," all to the same address and in every format imaginable. Today, someone reads each email, works out what it is, pulls out the vendor and invoice number, and routes it.
 
-Could a workflow have done most of this? Mostly, yes, and that's the point. A small ask is easy to test, easy to explain, and low-risk. Digging in also shows what not to automate. Here, the templates are maintained by hand, because adding one takes seconds.
+Once you know what an email is, everything after that is mechanical. The judgment is in the reading: deciding what a messy email and its attachment actually are. That's exactly what rules are bad at. Subject lines are unreliable, and every vendor formats things differently. So that's the AI step. It returns a category and a few key fields, a workflow does the routing and creates the records, and anything the AI isn't sure about goes to a person.
+
+Could a workflow do most of this? Mostly, yes, and that's the point. A small ask is easy to test, easy to explain, and low-risk.
+
+Digging in also shows what not to automate. Bank-detail change requests are a favorite target for fraud, so the agent only flags them. A person verifies every one directly with the vendor.
 
 ## A large ask
 
