@@ -14,15 +14,20 @@ At that point, nobody knows whether it's a quick win, a six-month project, or no
 
 **Before anyone opens a tool, I ask five questions:**
 
-1. **What starts the process?**
-2. **Which part takes the most manual effort today?**
-3. **Where does someone make a judgment call?** None means it's not an AI problem. One means it's a small ask. Many means it's a large one.
-4. **Where does the result have to land, and who's allowed to put it there?**
-5. **How will we know it worked?**
+1. **What starts the process?**\
+   An email, a status change, or a person deciding it's time. The trigger shapes everything after it.
+2. **Which part takes the most manual effort today?**\
+   Reading, comparing, re-keying, and chasing. That's where the payoff is.
+3. **Where does someone make a judgment call?**\
+   That's anywhere two experienced people might reasonably decide differently. None, with tidy inputs, usually means no AI. One usually means a small ask. Several, or one that spans systems or acts on someone's behalf, means a large one.
+4. **Where does the result have to land, and who's allowed to put it there?**\
+   The system of record, and who can change it, decide how much control the design needs.
+5. **How will we know it worked?**\
+   Pick a measure, like cycle time, touches, or errors, and capture it before you start.
 
 ## Everyone wants AI
 
-"We want an agent" is a fine starting point and a poor requirement. Guessing which kind of request you're holding is expensive in both directions. Either you spend months building an agent to do a job a rule could do, or you promise a quick win and walk straight into a security review.
+"We want an agent" is a fine starting point and a poor requirement. Guessing which kind of request you're holding is expensive in both directions. Either you spend months building an agent to do a job a rule could do, or you promise a quick win and walk straight into a security review nobody planned for.
 
 That's why those five questions come first, asked with the people who actually do the work. The answers put almost every request into one of three buckets.
 
@@ -30,25 +35,25 @@ That's why those five questions come first, asked with the people who actually d
 
 Routing approvals over a certain amount is a workflow condition. Flagging late orders is a report and an alert. Filling in fields on a new vendor is often configuration.
 
-If every decision in the process can be written as an if-then rule, a workflow will do it faster, cheaper, and the same way every time. Saying so early isn't a letdown. It gets the problem solved this month, and it earns trust for the request that does need AI.
+If every decision in the process can be written as an if-then rule, and the inputs arrive structured, a workflow will do it faster, cheaper, and the same way every time. Saying so early isn't a letdown. It gets the problem solved this month, and it earns trust for the request that does need AI.
 
 ## A small ask
 
-This is the most common answer: an ordinary workflow with one judgment step in it.
+In my experience, this is the most common answer: an ordinary workflow with one judgment step in it.
 
-Take collections emails drafted from about 30 templates. Gathering the invoice details, filling in the template, and creating the draft are all mechanical. The one real judgment is which template fits this customer's situation. That's the AI step, and a person still reviews and sends every email.
+Take collections emails drafted from about 30 templates. Gathering the invoice details, filling in the template, and creating the draft are all mechanical. The one real judgment is which template fits this customer's situation, and those situations don't map cleanly to fields. A decision table for 30 templates gets brittle every time one is added or renamed. That's the AI step, and a person still reviews and sends every email.
 
 Could a workflow have done most of this? Mostly, yes, and that's the point. A small ask is easy to test, easy to explain, and low-risk. Digging in also shows what not to automate. Here, the templates are maintained by hand, because adding one takes seconds.
 
 ## A large ask
 
-Some requests really are large. The agent has to reason across several systems, handle inputs that vary every time, or act on someone's behalf. This is also where teams that built first tend to hit walls: a sign-in prompt users can't get rid of, calls timing out on large data, approvals that have to happen before anything is written. None of those are AI problems.
+Some requests really are large. The agent has to reason across several systems, handle inputs that vary every time, or act on someone's behalf. This is also where teams that built first tend to hit walls: a sign-in prompt nobody expected, calls timing out on large data, approvals that have to happen before anything is written. None of those are AI problems.
 
-The sign-in prompt is a decision about whose identity the agent acts as. Acting as each user means a prompt, but every action carries that person's own permissions and name. A shared account removes the prompt, and gives everyone that account's access.
+The sign-in prompt is a decision about whose identity the agent acts as. Acting as each user means people sign in or consent, often just once if single sign-on is set up properly, and every action carries their own permissions and name. A shared service account removes the prompt, but everyone gets that account's access, and the audit trail shows the account instead of the person.
 
-The timeouts are platform limits, and the fix is shaping the data before the agent sees it, not a smarter model.
+The timeouts are platform limits, and the fix is architectural: filter and shape the data, page through it, or move the heavy work out of the conversation. A smarter model won't help.
 
-The approvals come down to one rule: the agent proposes, a person approves, and a workflow does the actual write.
+For writes that matter, my default is simple: the agent proposes, a person approves, and a workflow does the actual write. Low-risk, reversible actions can skip the person.
 
 And someone has to own the agent after launch. The quietest failure I've seen was an agent that simply stopped working because a credential behind it expired, and nobody was watching.
 
@@ -56,7 +61,7 @@ Large asks are worth doing. They're architecture projects with an AI step in the
 
 ## Back to the blank
 
-So the next time someone says "we want an agent for ___," start with the process. The blank usually turns out smaller than anyone expected, and sometimes it isn't AI at all.
+So the next time someone says "we want an agent for ___," start with the process. The blank often turns out smaller than anyone expected, and sometimes it isn't AI at all.
 
 Thanks for reading,\
 James
