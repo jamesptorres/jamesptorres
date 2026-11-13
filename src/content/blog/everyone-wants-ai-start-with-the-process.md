@@ -71,5 +71,3 @@ So the next time someone says "we want an agent for ___," start with the process
 
 Thanks for reading,\
 James
-
-*Next week: back to the* Do You Git It? *series with Part 2.*
