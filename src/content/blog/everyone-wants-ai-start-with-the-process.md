@@ -5,7 +5,7 @@ pubDate: 2026-11-13
 tags: ["AI", "Technical"]
 heroImage: ./images/everyone-wants-ai-start-with-the-process/cover.png
 heroAlt: "Everyone wants AI. Start with the process. A process flow of ordinary steps with a single AI step in the middle"
-draft: true
+draft: false
 ---
 
 Every AI conversation I'm in starts the same way: "We want an agent for ___." The blank changes. The sentence doesn't.
@@ -55,15 +55,15 @@ Now make the same inbox request bigger: the agent should resolve invoice discrep
 
 That's several judgment calls, across several systems, with the agent acting on someone's behalf. It's worth doing, but the hard questions stop being about AI. They become four architecture decisions:
 
-**Whose identity does the agent act as?** If it acts as each user, every action carries that person's permissions and name, and with single sign-on set up properly they often only sign in or consent once. A shared service account removes the prompt, but everyone gets that account's access, and the audit trail shows the account instead of the person. Decide this with security at the start.
+**Whose identity does the agent act as?** If it acts as each user, every action carries that person's permissions and name, and with single sign-on set up properly they often only sign in or consent once. A shared service account removes that step, but everyone gets that account's access, and the audit trail shows the account instead of the person. Decide this with security at the start.
 
-**What can it write, and who approves?** For writes that matter, my default is simple: the agent proposes, a person approves, and a workflow does the actual write. Low-risk, reversible actions can skip the person.
+**What can it write, and who approves?** For writes that matter, like adjusting that invoice, my default is simple: the agent proposes, a person approves, and a workflow does the actual write. Low-risk, reversible actions can skip the person.
 
 **What are the platform's limits?** Every platform caps how much data a call can return and how long it can run. The fix is architectural: filter and shape the data, page through it, or move the heavy work out of the conversation. A smarter model won't help.
 
 **Who owns it after launch?** An agent is software, and it needs an owner, testing, and monitoring. The quietest failure I've seen was an agent that simply stopped working because a credential behind it expired, and nobody was watching.
 
-Teams that build first usually meet these as surprises: a sign-in prompt nobody expected, calls timing out on large data, approvals bolted on at the end. Asked up front, they're just design decisions. That's the difference between a large ask and a stalled one: it gets scoped as an architecture project with AI in it.
+Teams that build first usually meet these as surprises: a sign-in prompt nobody expected, calls timing out on large data, approvals bolted on at the end. Asked up front, they're just design decisions. What keeps a large ask from stalling is scoping it as what it is: an architecture project with AI in it.
 
 ## Back to the blank
 
