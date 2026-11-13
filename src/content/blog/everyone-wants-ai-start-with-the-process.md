@@ -27,7 +27,7 @@ At that point, nobody knows whether it's a quick win, a six-month project, or no
 
 ## Everyone wants AI
 
-"We want an agent" is a fine starting point and a poor requirement. Guessing which kind of request you're holding is expensive in both directions. Either you spend months building an agent to do a job a rule could do, or you promise a quick win and walk straight into a security review nobody planned for.
+"We want an agent" is a fine starting point and a poor requirement. Guessing which kind of request you're holding is expensive in both directions. Either you spend months building an agent to do a job a rule could do, or you promise a quick win and end up with a six-month project nobody budgeted for.
 
 That's why those five questions come first, asked with the people who actually do the work. The answers put almost every request into one of three buckets.
 
